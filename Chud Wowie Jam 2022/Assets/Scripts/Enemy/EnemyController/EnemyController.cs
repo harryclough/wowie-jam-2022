@@ -48,10 +48,13 @@ public abstract class EnemyController : MonoBehaviour, DeathController
 
     private void OnEnemyPickedUpSheep(SheepController sheep)
     {
-        if (Target == sheep)
-        {
+        if (Target == sheep){
             Target = GetBestTarget();
-        }
+        }   
     }
 
+    public void OnWaveEnd(){
+        // Run away
+    }
 }
+
