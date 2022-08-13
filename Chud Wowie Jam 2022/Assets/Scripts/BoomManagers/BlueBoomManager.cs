@@ -15,7 +15,7 @@ public class BlueBoomManager : BoomManager
     private bool chasing;
     private Homing homing;
 
-    // Getter for chainRadius
+    // Getter for chainradius
     public float ChainRadius {
         get { return chainRadius; }
     }
@@ -45,28 +45,16 @@ public class BlueBoomManager : BoomManager
             if (collider.tag == "Enemy" && !chainedEnemiesSet.Contains(collider))
             {
                 chainedEnemiesSet.Add(collider);
-                homing.target = collider.gameObject;
+                homing.SetTarget(collider.gameObject);
                 return;
             }
         }
-        /*
-        int i = 0;
-        Debug.Log("HitColliders length: " + hitColliders.Length);
-        while (i < hitColliders.Length)
-        {
-            if (hitColliders[i].tag == "Enemy" && !chainedEnemies.Contains(hitColliders[i]))
-            {
-                chainedEnemies.Add(hitColliders[i]);
-                homing.target = hitColliders[i].gameObject;
-                return;
-            }
-            i++;
-        }
-         chainedEnemies.Clear();
-        */
+        //If no targets, die
         chainedEnemiesSet.Clear();
         chasing = false;
+        homing.SetTarget(null);
         homing.enabled = false;
+        Destroy(this.gameObject);
     }
 
     // A function to sort a array of enemies by distance from the sheep and return the sorted array
@@ -103,7 +91,7 @@ public class BlueBoomManager : BoomManager
     {
         MoveForward(gameObject);
         // check if the sheep has reached the target enemy
-        if (chasing && Vector2.Distance(gameObject.transform.position, homing.target.transform.position) < hitRadius)
+        if (homing.target == null || (chasing && Vector2.Distance(gameObject.transform.position, homing.target.transform.position) < hitRadius))
         {
             HitEnemiesInRadius(gameObject);
             Chain(gameObject);

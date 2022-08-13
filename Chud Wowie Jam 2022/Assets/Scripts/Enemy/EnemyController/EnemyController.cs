@@ -8,6 +8,9 @@ public abstract class EnemyController : MonoBehaviour, DeathController
     public Homing homingScript;
     public HealthController healthController;
     public Transform pickedUpSheepPosition;
+    
+    public delegate void DeathEvent();
+    public event DeathEvent deathEvent;
 
     public float speed = 4f;
 
@@ -37,6 +40,10 @@ public abstract class EnemyController : MonoBehaviour, DeathController
 
     public void Die()
     {
+        if (deathEvent != null)
+        {
+            deathEvent();
+        }
         if (IsCarryingSheep()) {
             carriedSheep.EnemyDrop();
         }

@@ -25,6 +25,7 @@ public class BoomManager : MonoBehaviour {
     public virtual void Boom(GameObject gameObject){
         HitEnemiesInRadius(gameObject);
         Debug.Log("Boom!");
+        Destroy(gameObject);
     }
 
     // A function to find all game objects with the tag "Enemy" within the 2D blast radius and invoke hit on them in their HealthController script for blast damage

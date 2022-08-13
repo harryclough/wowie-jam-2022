@@ -50,6 +50,7 @@ public class SheepController : MonoBehaviour
     // Boom method
     public void Boom()
     {
+        isTargetable = false;
         boomManager.Boom(gameObject);
     }
 

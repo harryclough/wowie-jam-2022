@@ -103,8 +103,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b57f87d3a333614d8f2f8a46bde6f61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blastRadius: 0.1
+  blastRadius: 1
   blastDamage: 50
-  chainRadius: 2.5
-  speed: 10
+  crosshair: 0
+  chainRadius: 7
+  speed: 15
   hitRadius: 0.1

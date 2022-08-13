@@ -16,6 +16,7 @@ public class DebugCrosshair : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         cc.SetColour(sheep.GetComponent<SpriteRenderer>().color);
         
         // If sheep has a BlueBoomManager, set the scale based on the chain radius, otherwise use the blast radius
