@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BasicWolfController : EnemyController
 {
+    private float deltaAngle;
+
     void Start() {
         if (!Target) {
             Target = GetBestTarget();
@@ -17,10 +19,7 @@ public class BasicWolfController : EnemyController
         }
         else if (Target)
         {
-            // Move towrads the target at speed
-            Vector3 moveDirection = Target.transform.position - transform.position;
-            moveDirection.Normalize();
-            GetComponent<Rigidbody2D>().MovePosition(transform.position + moveDirection * speed * Time.deltaTime);
+            moveTowardsTarget(speed);
         }
     }
 

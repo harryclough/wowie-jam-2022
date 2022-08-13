@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Homing : MonoBehaviour
 {
-    public GameObject target;
+    [HideInInspector] public GameObject target;
 
     private void FixedUpdate() {
         LookAt2D(target);

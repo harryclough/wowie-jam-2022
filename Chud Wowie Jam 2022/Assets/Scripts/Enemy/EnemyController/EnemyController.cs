@@ -13,7 +13,7 @@ public abstract class EnemyController : MonoBehaviour, DeathController
 
     [HideInInspector] public SheepController carriedSheep = null;
 
-    private SheepController target;
+    protected SheepController target;
     public SheepController Target
     {
         get { return target; }
@@ -88,12 +88,18 @@ public abstract class EnemyController : MonoBehaviour, DeathController
         return distance / sheep.targetPriority;
     }
 
-    private void OnTargetUntargetable(SheepController sheep)
+    protected void OnTargetUntargetable(SheepController sheep)
     {
         if (!IsCarryingSheep() && sheep == Target)
         {
             Target = GetBestTarget();
         }   
+    }
+
+    protected void moveTowardsTarget(float speed) {
+        Vector3 moveDirection = target.transform.position - transform.position;
+        moveDirection.Normalize();
+        GetComponent<Rigidbody2D>().MovePosition(transform.position + moveDirection * speed * Time.deltaTime);
     }
 
     void OnCollisionEnter2D(Collision2D collision)

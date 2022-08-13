@@ -177,6 +177,7 @@ MonoBehaviour:
   pickedUpSheepPosition: {fileID: 7467432118206433286}
   speed: 3
   carriedSheep: {fileID: 0}
+  randomMoveVariance: 60
 --- !u!114 &3719017113732820461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,7 +192,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 100
-  isDead: 0
 --- !u!114 &3719017113732820460
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -71,12 +71,8 @@ public class PlayerController : MonoBehaviour
             GameObject[] sheep = GameObject.FindGameObjectsWithTag("Sheep");
             foreach (GameObject sheepObject in sheep)
             {
-                Vector3 forceDirection = transform.position - sheepObject.transform.position;
-                forceDirection.Normalize();
-                // The force is maxForce at 0 distance and 0 force at maxDistance
-                float distance = Vector3.Distance(sheepObject.transform.position, transform.position);
-                float forceAmount = Mathf.Lerp(maxSheepForce, 0f, distance / maxSheepDistance);
-                sheepObject.GetComponent<Rigidbody2D>().AddForce(forceDirection * forceAmount);
+                SheepController sheepController = sheepObject.GetComponent<SheepController>();
+                sheepController.ApplyWhistleForce(transform.position, maxSheepForce, 0f, maxSheepDistance);
             }
         }
 
