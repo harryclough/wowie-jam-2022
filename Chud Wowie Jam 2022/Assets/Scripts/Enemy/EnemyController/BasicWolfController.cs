@@ -50,7 +50,7 @@ public class BasicWolfController : EnemyController
         {
             // sheep.GetComponent<Rigidbody2D>().AddForce(-(transform.position - sheep.transform.position).normalized * 1000f);
             sheep.gameObject.SetActive(false);
-            sheep.onSheepPickedUp();
+            sheep.sheepPickedUpEvent();
         }
     }
 

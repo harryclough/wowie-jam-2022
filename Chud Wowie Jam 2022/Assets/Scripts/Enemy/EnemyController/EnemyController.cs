@@ -17,13 +17,13 @@ public abstract class EnemyController : MonoBehaviour, DeathController
         protected set {
             if (target != null)
             {
-                target.onSheepPickedUp -= OnSheepPickedUp;
+                target.sheepPickedUpEvent -= OnSheepPickedUp;
             }
             target = value;
             if (target != null)
             {
                 homingScript.target = target.gameObject;
-                target.onSheepPickedUp += OnSheepPickedUp;
+                target.sheepPickedUpEvent += OnSheepPickedUp;
             }
             else
             {
