@@ -7,8 +7,8 @@ public class SheepController : MonoBehaviour
     // Bootmanager variable
     public BoomManager boomManager;
 
-    public delegate void SheepPickedUpEvent();
-    public SheepPickedUpEvent sheepPickedUpEvent;
+    public delegate void EnemyPickUpSheepEvent(SheepController sheep);
+    public EnemyPickUpSheepEvent enemyPickUpSheepEvent;
 
     public float targetPriority = 1f;
 
