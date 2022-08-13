@@ -34,8 +34,6 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        // The player moves in the direction of the input axes
-        // for both horizontal and veritcal axes
         Vector3 moveDirection = Vector3.zero;
         moveDirection.x = Input.GetAxisRaw("Horizontal");
         moveDirection.y = Input.GetAxisRaw("Vertical");

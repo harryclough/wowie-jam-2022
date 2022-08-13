@@ -10,7 +10,7 @@ public class SheepController : MonoBehaviour
     public delegate void OnSheepPickedUp();
     public OnSheepPickedUp onSheepPickedUp;
 
-    public float priority = 1f;
+    public float targetPriority = 1f;
 
     // Boom method
     public void Boom()

@@ -8,29 +8,47 @@ public abstract class EnemyController : MonoBehaviour, DeathController
     public Homing homingScript;
     public HealthController healthController;
 
+    public float speed = 4f;
+
     private SheepController target;
     public SheepController Target
     {
         get { return target; }
-        private set {
+        protected set {
             if (target != null)
             {
                 target.onSheepPickedUp -= OnSheepPickedUp;
             }
             target = value;
-            target.onSheepPickedUp += OnSheepPickedUp;
+            if (target != null)
+            {
+                homingScript.target = target.gameObject;
+                target.onSheepPickedUp += OnSheepPickedUp;
+            }
+            else
+            {
+                homingScript.target = null;
+            }
         }
     }
+
+    public void Die()
+    {
+        Destroy(gameObject);
+    }
+
+
+    public float GetSheepHeuristic(SheepController sheep)
+    {
+        float distance = Vector3.Distance(sheep.transform.position, transform.position);
+        return distance / sheep.targetPriority;
+    }
+
+    public abstract SheepController GetBestTarget();
 
     private void OnSheepPickedUp()
     {
         Target = null;
     }
 
-    public abstract void FindNewTarget();
-
-    public void Die()
-    {
-        Destroy(gameObject);
-    }
 }
