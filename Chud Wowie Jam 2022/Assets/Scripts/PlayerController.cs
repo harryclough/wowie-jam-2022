@@ -24,10 +24,22 @@ public class PlayerController : MonoBehaviour
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(mousePos);
         rotatingComponents.transform.rotation = Quaternion.LookRotation(Vector3.forward, mouseWorldPos - transform.position);
 
-        // When the axes "fire" is pressed, fire the current gun
         if (Input.GetAxis("Shoot") > 0)
         {
             guns[currentGunIndex].TryToFire();
+        }
+        
+        // Toggle gun when "Switch Gun" is pressed
+        if (Input.GetButtonDown("Switch Gun"))
+        {
+            if (guns.Length > 1) 
+            {
+                guns[currentGunIndex].OnSwitchOff();
+                currentGunIndex = (currentGunIndex + 1) % guns.Length;
+                guns[currentGunIndex].OnSwitchTo();
+            }
+        } else {
+            guns[currentGunIndex].UpdateReload();
         }
     }
 

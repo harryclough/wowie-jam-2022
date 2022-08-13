@@ -14,7 +14,9 @@ public class Shotgun : Gun
         float deltaAngle = spreadInDegrees / (pellets - 1);
         for (int i = 0; i < pellets; i++)
         {
-            Quaternion rotation = Quaternion.Euler(0, 0, deltaAngle * i - spreadInDegrees / 2);
+            float angle = -spreadInDegrees / 2 + i * deltaAngle;
+            angle += Random.Range(-deltaAngle / 2, deltaAngle / 2);
+            Quaternion rotation = Quaternion.Euler(0, 0, angle);
             Instantiate(bulletPrefab, transform.position, transform.rotation * rotation);
         }
     }

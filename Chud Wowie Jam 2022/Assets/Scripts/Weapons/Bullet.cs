@@ -5,13 +5,17 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] protected float speed = 6f;
-    [SerializeField] protected float damage = 50f;
+    [SerializeField] protected float maxDamage = 50f;
+    [SerializeField] protected float minDamage = 25f;
     [SerializeField] protected float lifeTime = 1f;
+
+    protected float lifeTimeRemaining;
 
     protected Rigidbody2D rb;
 
     void Start()
     {
+        lifeTimeRemaining = lifeTime;
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = transform.up * speed;
     }
@@ -20,6 +24,7 @@ public class Bullet : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
+            float damage = Mathf.Lerp(minDamage, maxDamage, lifeTimeRemaining / lifeTime);
             other.GetComponentInParent<HealthController>().Hit(damage);
             Destroy(gameObject);
         }
@@ -27,14 +32,13 @@ public class Bullet : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Destroy the bullet after it's lifetime
-        if (lifeTime > 0)
+        if (lifeTimeRemaining > 0)
         {
-            lifeTime -= Time.deltaTime;
-            if (lifeTime <= 0)
-            {
-                Destroy(gameObject);
-            }
+            lifeTimeRemaining -= Time.deltaTime;
+        }
+        if (lifeTimeRemaining <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 }

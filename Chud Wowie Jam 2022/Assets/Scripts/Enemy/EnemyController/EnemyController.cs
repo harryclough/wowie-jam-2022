@@ -90,7 +90,7 @@ public abstract class EnemyController : MonoBehaviour, DeathController
 
     private void OnTargetUntargetable(SheepController sheep)
     {
-        if (!carriedSheep && sheep == Target)
+        if (!IsCarryingSheep() && sheep == Target)
         {
             Target = GetBestTarget();
         }

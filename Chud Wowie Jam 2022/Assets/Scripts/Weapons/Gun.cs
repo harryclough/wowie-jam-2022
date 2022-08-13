@@ -19,7 +19,17 @@ public abstract class Gun : MonoBehaviour
         currentBullets = maxBullets;
     }
 
-    void Update()
+    public void OnSwitchTo() {
+        if (currentBullets == 0) {
+            reloadTimer = totalReloadTime;
+        } else {
+            fireTimer = totalFireDelay;
+        }
+    }
+
+    public void OnSwitchOff() { }
+
+    public void UpdateReload()
     {
         if (reloadTimer > 0)
         {
