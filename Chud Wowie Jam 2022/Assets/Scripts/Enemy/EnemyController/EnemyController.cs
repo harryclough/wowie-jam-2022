@@ -37,14 +37,21 @@ public abstract class EnemyController : MonoBehaviour, DeathController
 
     public void Die()
     {
+        if (IsCarryingSheep()) {
+            carriedSheep.EnemyDrop();
+        }
+        if (Target) {
+            target.onSheepUntargetableEvent -= OnTargetUntargetable;
+        }
         Destroy(gameObject);
     }
 
-
-    public float GetSheepHeuristic(SheepController sheep)
+    public void OnNewTargetAvailable(SheepController newTarget)
     {
-        float distance = Vector3.Distance(sheep.transform.position, transform.position);
-        return distance / sheep.targetPriority;
+        if (!IsCarryingSheep())
+        {
+            Target = GetBestTarget();
+        }
     }
 
     public SheepController GetBestTarget()
@@ -75,9 +82,15 @@ public abstract class EnemyController : MonoBehaviour, DeathController
 
     public abstract void OnPickUpSheep();
 
+    protected float GetSheepHeuristic(SheepController sheep)
+    {
+        float distance = Vector3.Distance(sheep.transform.position, transform.position);
+        return distance / sheep.targetPriority;
+    }
+
     private void OnTargetUntargetable(SheepController sheep)
     {
-        if (!carriedSheep && sheep == Target)
+        if (!IsCarryingSheep() && sheep == Target)
         {
             Target = GetBestTarget();
         }   
@@ -86,7 +99,7 @@ public abstract class EnemyController : MonoBehaviour, DeathController
     void OnCollisionEnter2D(Collision2D collision)
     {
         SheepController sheep = collision.gameObject.GetComponent<SheepController>();
-        if (!IsCarryingSheep() && sheep && sheep.IsTargetable)
+        if (sheep && !IsCarryingSheep() && sheep.IsTargetable)
         {
             carriedSheep = sheep;
             sheep.EnemyPickUp(pickedUpSheepPosition);

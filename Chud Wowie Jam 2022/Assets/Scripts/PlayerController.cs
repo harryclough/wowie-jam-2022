@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public GameObject sprite;
-    public float maxForce = 100f;
-    public float maxDistance = 10f;
-    public float speed = 5f;
-    public float pickupRadius = 3f;
+    [SerializeField] private GameObject rotatingComponents;
+
+    [Header("Sheep Interaction")]
+    [SerializeField] private float maxSheepForce = 100f;
+    [SerializeField] private float maxSheepDistance = 10f;
+    [SerializeField] private float speed = 5f;
+    [SerializeField] private float pickupRadius = 3f;
+
+    [Header("Guns")]
+    [SerializeField] private Gun[] guns;
+    [SerializeField] private int currentGunIndex = 0;
 
     void Update()
     {
@@ -16,7 +22,25 @@ public class PlayerController : MonoBehaviour
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = transform.position.z - Camera.main.transform.position.z;
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(mousePos);
-        sprite.transform.rotation = Quaternion.LookRotation(Vector3.forward, mouseWorldPos - transform.position);
+        rotatingComponents.transform.rotation = Quaternion.LookRotation(Vector3.forward, mouseWorldPos - transform.position);
+
+        if (Input.GetAxis("Shoot") > 0)
+        {
+            guns[currentGunIndex].TryToFire();
+        }
+        
+        // Toggle gun when "Switch Gun" is pressed
+        if (Input.GetButtonDown("Switch Gun"))
+        {
+            if (guns.Length > 1) 
+            {
+                guns[currentGunIndex].OnSwitchOff();
+                currentGunIndex = (currentGunIndex + 1) % guns.Length;
+                guns[currentGunIndex].OnSwitchTo();
+            }
+        } else {
+            guns[currentGunIndex].UpdateReload();
+        }
     }
 
     // Function to select sheep under the cursor in the world
@@ -40,7 +64,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
     void FixedUpdate()
     {
         if (Input.GetAxis("Call Sheep") > 0)
@@ -52,7 +75,7 @@ public class PlayerController : MonoBehaviour
                 forceDirection.Normalize();
                 // The force is maxForce at 0 distance and 0 force at maxDistance
                 float distance = Vector3.Distance(sheepObject.transform.position, transform.position);
-                float forceAmount = Mathf.Lerp(maxForce, 0f, distance / maxDistance);
+                float forceAmount = Mathf.Lerp(maxSheepForce, 0f, distance / maxSheepDistance);
                 sheepObject.GetComponent<Rigidbody2D>().AddForce(forceDirection * forceAmount);
             }
         }

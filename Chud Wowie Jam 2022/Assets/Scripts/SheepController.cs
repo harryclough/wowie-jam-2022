@@ -23,7 +23,10 @@ public class SheepController : MonoBehaviour
         private set
         {
             isTargetable = value;
-            if (!isTargetable)
+            if (isTargetable){
+                AlertEnemiesTargetable();
+            }
+            else
             {
                 onSheepUntargetableEvent(this);
             }
@@ -58,7 +61,7 @@ public class SheepController : MonoBehaviour
             return;
         }
         IsTargetable = false;
-        OnCarryBegin(newParent);
+        SharedPickUp(newParent);
     }
 
     public void PlayerPickUp(Transform newParent)
@@ -68,23 +71,34 @@ public class SheepController : MonoBehaviour
             Debug.LogWarning("Tried to pick up sheep that is already not targetable!");
             return;
         }
-        OnCarryBegin(newParent);
+        SharedPickUp(newParent);
     }
 
     public void EnemyDrop()
     {
         IsTargetable = true;
-        OnCarryEnd();
+        SharedCarryEnd();
     }
 
     public void PlayerDrop()
     {
-        OnCarryEnd();
+        SharedCarryEnd();
     }
 
-    private void OnCarryBegin(Transform newParent)
+    private void AlertEnemiesTargetable()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            enemy.GetComponent<EnemyController>().OnNewTargetAvailable(this);
+        }
+    }
+
+    private void SharedPickUp(Transform newParent)
     {
         rb.simulated = false;
+        rb.velocity = Vector2.zero;
+        rb.angularVelocity = 0f;
 
         gameObject.transform.parent = newParent;
         gameObject.transform.localPosition = Vector3.zero;
@@ -92,7 +106,7 @@ public class SheepController : MonoBehaviour
         gameObject.transform.localScale = Vector3.one;
     }
 
-    private void OnCarryEnd()
+    private void SharedCarryEnd()
     {
         rb.simulated = true;
 
