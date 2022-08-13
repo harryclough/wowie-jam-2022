@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public float maxForce = 100f;
     public float maxDistance = 10f;
     public float speed = 5f;
+    public float pickupRadius = 3f;
 
     void Update()
     {
@@ -17,6 +18,28 @@ public class PlayerController : MonoBehaviour
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(mousePos);
         sprite.transform.rotation = Quaternion.LookRotation(Vector3.forward, mouseWorldPos - transform.position);
     }
+
+    // Function to select sheep under the cursor in the world
+    void SelectSheep()
+    {
+        // Get the mouse position in the world
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.z = transform.position.z - Camera.main.transform.position.z;
+        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(mousePos);
+        // Get all game objects with the tag "Sheep" within the maxDistance
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(mouseWorldPos, pickupRadius);
+        // Loop through all the game objects with the tag "Sheep"
+        for (int i = 0; i < hitColliders.Length; i++)
+        {
+            // If the game object is a sheep
+            if (hitColliders[i].tag == "Sheep")
+            {
+                // Set the sheep to be the selected sheep
+                hitColliders[i].GetComponent<SheepController>().SetSelected(true);
+            }
+        }
+    }
+
 
     void FixedUpdate()
     {
@@ -33,6 +56,9 @@ public class PlayerController : MonoBehaviour
                 sheepObject.GetComponent<Rigidbody2D>().AddForce(forceDirection * forceAmount);
             }
         }
+
+
+
 
         Vector3 moveDirection = Vector3.zero;
         moveDirection.x = Input.GetAxisRaw("Horizontal");
