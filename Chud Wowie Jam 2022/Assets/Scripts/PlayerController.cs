@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
             if (hitColliders[i].tag == "Sheep")
             {
                 // Set the sheep to be the selected sheep
-                hitColliders[i].GetComponent<SheepController>().SetSelected(true);
+                // hitColliders[i].GetComponent<SheepController>().SetSelected(true);
             }
         }
     }
