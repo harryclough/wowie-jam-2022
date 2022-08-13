@@ -7,8 +7,11 @@ public abstract class EnemyController : MonoBehaviour, DeathController
     public GameObject sprite;
     public Homing homingScript;
     public HealthController healthController;
+    public Transform pickedUpSheepPosition;
 
     public float speed = 4f;
+
+    [HideInInspector] public SheepController carriedSheep = null;
 
     private SheepController target;
     public SheepController Target
@@ -17,13 +20,13 @@ public abstract class EnemyController : MonoBehaviour, DeathController
         protected set {
             if (target != null)
             {
-                target.enemyPickUpSheepEvent -= OnEnemyPickedUpSheep;
+                target.onSheepUntargetableEvent -= OnTargetUntargetable;
             }
             target = value;
             if (target != null)
             {
                 homingScript.target = target.gameObject;
-                target.enemyPickUpSheepEvent += OnEnemyPickedUpSheep;
+                target.onSheepUntargetableEvent += OnTargetUntargetable;
             }
             else
             {
@@ -44,14 +47,56 @@ public abstract class EnemyController : MonoBehaviour, DeathController
         return distance / sheep.targetPriority;
     }
 
-    public abstract SheepController GetBestTarget();
-
-    private void OnEnemyPickedUpSheep(SheepController sheep)
+    public SheepController GetBestTarget()
     {
-        if (Target == sheep)
+        GameObject[] sheep = GameObject.FindGameObjectsWithTag("Sheep");
+        SheepController bestSheep = null;
+        float bestValue = float.MaxValue;
+        foreach (GameObject sheepObject in sheep)
+        {
+            SheepController sheepController = sheepObject.GetComponent<SheepController>();
+            if (sheepController && sheepController.IsTargetable)
+            {
+                float value = GetSheepHeuristic(sheepObject.GetComponent<SheepController>());
+                if (value < bestValue)
+                {
+                    bestSheep = sheepObject.GetComponent<SheepController>();
+                    bestValue = value;
+                }
+            }
+        }
+        return bestSheep;
+    }
+
+    public bool IsCarryingSheep()
+    {
+        return carriedSheep != null;
+    }
+
+    public abstract void OnPickUpSheep();
+
+    private void OnTargetUntargetable(SheepController sheep)
+    {
+        if (!carriedSheep && sheep == Target)
         {
             Target = GetBestTarget();
         }
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        SheepController sheep = collision.gameObject.GetComponent<SheepController>();
+        if (!IsCarryingSheep() && sheep && sheep.IsTargetable)
+        {
+            carriedSheep = sheep;
+            sheep.EnemyPickUp(pickedUpSheepPosition);
+
+            Vector3 direction = transform.position.normalized;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+            Target = null;
+            OnPickUpSheep();
+        }
+    }
 }

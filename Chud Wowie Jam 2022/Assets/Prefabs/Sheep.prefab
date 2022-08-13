@@ -86,7 +86,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boomManager: {fileID: 5281000421352939627}
+  rb: {fileID: -4944860022018507873}
   targetPriority: 1
+  enemySlowdown: 0.25
 --- !u!114 &5281000421352939627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,6 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blastRadius: 2.5
   blastDamage: 100
+  crosshair: 0
 --- !u!1 &7980833586253166279
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,7 +175,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1636425733
-  m_SortingLayer: 2
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3e40c7914530deb459360c40e5f83d69, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

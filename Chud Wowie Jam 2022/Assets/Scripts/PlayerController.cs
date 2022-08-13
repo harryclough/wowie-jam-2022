@@ -57,9 +57,6 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-
-
-
         Vector3 moveDirection = Vector3.zero;
         moveDirection.x = Input.GetAxisRaw("Horizontal");
         moveDirection.y = Input.GetAxisRaw("Vertical");
