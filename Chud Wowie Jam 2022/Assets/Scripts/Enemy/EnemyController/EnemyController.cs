@@ -80,7 +80,7 @@ public abstract class EnemyController : MonoBehaviour, DeathController
         if (!carriedSheep && sheep == Target)
         {
             Target = GetBestTarget();
-        }
+        }   
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -99,4 +99,10 @@ public abstract class EnemyController : MonoBehaviour, DeathController
             OnPickUpSheep();
         }
     }
+
+    public void OnWaveEnd(){
+        // Run away
+
+    }
 }
+
