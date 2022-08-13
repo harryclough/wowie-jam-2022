@@ -61,9 +61,24 @@ public class SheepController : MonoBehaviour
         OnCarryBegin(newParent);
     }
 
+    public void PlayerPickUp(Transform newParent)
+    {
+        if (!isTargetable)
+        {
+            Debug.LogWarning("Tried to pick up sheep that is already not targetable!");
+            return;
+        }
+        OnCarryBegin(newParent);
+    }
+
     public void EnemyDrop()
     {
         IsTargetable = true;
+        OnCarryEnd();
+    }
+
+    public void PlayerDrop()
+    {
         OnCarryEnd();
     }
 
