@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 128818544514105928, guid: e2b95bab179338748b866b3101d3a968, type: 3}
       propertyPath: m_Name
-      value: Sheep (Grey)
+      value: Sheep (Green)
       objectReference: {fileID: 0}
     - target: {fileID: 1149209592363605941, guid: e2b95bab179338748b866b3101d3a968, type: 3}
       propertyPath: boomManager
@@ -17,15 +17,15 @@ PrefabInstance:
       objectReference: {fileID: 69710377010810601}
     - target: {fileID: 8287827471415588422, guid: e2b95bab179338748b866b3101d3a968, type: 3}
       propertyPath: m_Color.b
-      value: 0.1792453
+      value: 0.02494954
       objectReference: {fileID: 0}
     - target: {fileID: 8287827471415588422, guid: e2b95bab179338748b866b3101d3a968, type: 3}
       propertyPath: m_Color.g
-      value: 0.1792453
+      value: 0.2735849
       objectReference: {fileID: 0}
     - target: {fileID: 8287827471415588422, guid: e2b95bab179338748b866b3101d3a968, type: 3}
       propertyPath: m_Color.r
-      value: 0.1792453
+      value: 0.02611331
       objectReference: {fileID: 0}
     - target: {fileID: 8484769005259669748, guid: e2b95bab179338748b866b3101d3a968, type: 3}
       propertyPath: m_RootOrder
