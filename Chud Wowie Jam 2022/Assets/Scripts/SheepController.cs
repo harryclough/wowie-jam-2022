@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class SheepController : MonoBehaviour
 {
-    //Bootmanager variable
+    // Bootmanager variable
     public BoomManager boomManager;
 
-    //Boom method
+    public delegate void OnSheepPickedUp();
+    public OnSheepPickedUp onSheepPickedUp;
+
+    public float priority = 1f;
+
+    // Boom method
     public void Boom()
     {
         boomManager.Boom(gameObject);

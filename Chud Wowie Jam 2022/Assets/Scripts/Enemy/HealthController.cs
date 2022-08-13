@@ -7,6 +7,7 @@ public class HealthController : MonoBehaviour
     public float maxHealth = 100f;
     public float currentHealth = 100f;
     public bool isDead = false;
+    public DeathController deathController;
 
     public void Hit(float damage)
     {
@@ -14,14 +15,7 @@ public class HealthController : MonoBehaviour
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
-            Die();
-
+            deathController.Die();
         }
-    }
-
-    public void Die()
-    {
-        //TODO: Add death walk
-        gameObject.SetActive(false);
     }
 }
