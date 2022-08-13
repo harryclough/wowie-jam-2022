@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetAxis("Call Sheep") > 0)
         {
             GameObject[] sheep = GameObject.FindGameObjectsWithTag("Sheep");
             foreach (GameObject sheepObject in sheep)
@@ -34,24 +34,11 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        // The player moves in the direction that is input at their speed
+        // The player moves in the direction of the input axes
+        // for both horizontal and veritcal axes
         Vector3 moveDirection = Vector3.zero;
-        if (Input.GetKey(KeyCode.W))
-        {
-            moveDirection += Vector3.up;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            moveDirection += Vector3.down;
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            moveDirection += Vector3.left;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            moveDirection += Vector3.right;
-        }
+        moveDirection.x = Input.GetAxisRaw("Horizontal");
+        moveDirection.y = Input.GetAxisRaw("Vertical");
         moveDirection.Normalize();
         transform.position += moveDirection * speed * Time.deltaTime;
     }

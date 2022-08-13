@@ -15,6 +15,18 @@ PrefabInstance:
       propertyPath: boomManager
       value: 
       objectReference: {fileID: 8242902532145044509}
+    - target: {fileID: 5130218777491796643, guid: e2b95bab179338748b866b3101d3a968, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5130218777491796643, guid: e2b95bab179338748b866b3101d3a968, type: 3}
+      propertyPath: m_Color.g
+      value: 0.20546007
+      objectReference: {fileID: 0}
+    - target: {fileID: 5130218777491796643, guid: e2b95bab179338748b866b3101d3a968, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8287827471415588422, guid: e2b95bab179338748b866b3101d3a968, type: 3}
       propertyPath: m_Color.b
       value: 0.8773585
@@ -95,3 +107,4 @@ MonoBehaviour:
   blastDamage: 50
   chainRadius: 2.5
   speed: 10
+  hitRadius: 0.1

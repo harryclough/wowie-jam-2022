@@ -491,12 +491,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8242902532145044509, guid: 6ec6ceadcd495f54aa13206668ee7d57, type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8242902532145044509, guid: 6ec6ceadcd495f54aa13206668ee7d57, type: 3}
       propertyPath: blastDamage
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8242902532145044509, guid: 6ec6ceadcd495f54aa13206668ee7d57, type: 3}
       propertyPath: blastRadius
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8242902532145044509, guid: 6ec6ceadcd495f54aa13206668ee7d57, type: 3}
+      propertyPath: chainRadius
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ec6ceadcd495f54aa13206668ee7d57, type: 3}
