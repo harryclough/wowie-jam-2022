@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &1597041885341642920
+--- !u!1001 &1732593058319122734
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9,23 +9,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 128818544514105928, guid: e2b95bab179338748b866b3101d3a968, type: 3}
       propertyPath: m_Name
-      value: Sheep (Red)
+      value: Sheep (Yellow)
       objectReference: {fileID: 0}
     - target: {fileID: 1149209592363605941, guid: e2b95bab179338748b866b3101d3a968, type: 3}
       propertyPath: boomManager
       value: 
-      objectReference: {fileID: 3101969619941829818}
+      objectReference: {fileID: 2455131120979588700}
     - target: {fileID: 8287827471415588422, guid: e2b95bab179338748b866b3101d3a968, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 0.16280994
       objectReference: {fileID: 0}
     - target: {fileID: 8287827471415588422, guid: e2b95bab179338748b866b3101d3a968, type: 3}
       propertyPath: m_Color.g
-      value: 0
+      value: 0.8493563
       objectReference: {fileID: 0}
     - target: {fileID: 8287827471415588422, guid: e2b95bab179338748b866b3101d3a968, type: 3}
       propertyPath: m_Color.r
-      value: 0.9811321
+      value: 0.9245283
       objectReference: {fileID: 0}
     - target: {fileID: 8484769005259669748, guid: e2b95bab179338748b866b3101d3a968, type: 3}
       propertyPath: m_RootOrder
@@ -74,22 +74,22 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 5281000421352939627, guid: e2b95bab179338748b866b3101d3a968, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e2b95bab179338748b866b3101d3a968, type: 3}
---- !u!1 &1720501410107912928 stripped
+--- !u!1 &1856274679133913958 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 128818544514105928, guid: e2b95bab179338748b866b3101d3a968, type: 3}
-  m_PrefabInstance: {fileID: 1597041885341642920}
+  m_PrefabInstance: {fileID: 1732593058319122734}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3101969619941829818
+--- !u!114 &2455131120979588700
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1720501410107912928}
+  m_GameObject: {fileID: 1856274679133913958}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d934c0c0006e3344ab778e7194e5039, type: 3}
+  m_Script: {fileID: 11500000, guid: 58106e13f54b6f1488b63e5eebf814bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blastRadius: 10
-  blastDamage: 250
+  blastRadius: 2.5
+  blastDamage: 100
