@@ -8,6 +8,7 @@ public class YellowBoomManager : BoomManager
 {
     public override void Boom(GameObject gameObject)
     {
+        base.Boom(gameObject);
         Debug.Log("Yellow sheep is boomed");
     }
 }

@@ -15,6 +15,11 @@ public class BlueBoomManager : BoomManager
     private bool chasing;
     private Homing homing;
 
+    // Getter for chainRadius
+    public float ChainRadius {
+        get { return chainRadius; }
+    }
+
     public override void Boom(GameObject gameObject)
     {
         gameObject.GetComponent<Collider2D>().enabled = false;
