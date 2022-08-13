@@ -251,12 +251,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3719017113732820463, guid: 097982ccc27c81b46ac4500aea2e2133, type: 3}
     - target: {fileID: 3350422929174347171, guid: d14897c27df5c4a4592b57c1648f7dd2, type: 3}
+      propertyPath: spawns.Array.data[1].enemy
+      value: 
+      objectReference: {fileID: 3719017113732820463, guid: 097982ccc27c81b46ac4500aea2e2133, type: 3}
+    - target: {fileID: 3350422929174347171, guid: d14897c27df5c4a4592b57c1648f7dd2, type: 3}
       propertyPath: spawns.Array.data[0].maxSpawn
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3350422929174347171, guid: d14897c27df5c4a4592b57c1648f7dd2, type: 3}
       propertyPath: spawns.Array.data[0].packSize
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3350422929174347171, guid: d14897c27df5c4a4592b57c1648f7dd2, type: 3}
+      propertyPath: spawns.Array.data[1].maxSpawn
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3350422929174347171, guid: d14897c27df5c4a4592b57c1648f7dd2, type: 3}
+      propertyPath: spawns.Array.data[1].packSize
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3350422929174347171, guid: d14897c27df5c4a4592b57c1648f7dd2, type: 3}
       propertyPath: spawns.Array.data[0].spawnTimer
@@ -269,6 +281,14 @@ PrefabInstance:
     - target: {fileID: 3350422929174347171, guid: d14897c27df5c4a4592b57c1648f7dd2, type: 3}
       propertyPath: spawns.Array.data[0].minSpawnTimer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3350422929174347171, guid: d14897c27df5c4a4592b57c1648f7dd2, type: 3}
+      propertyPath: spawns.Array.data[1].maxSpawnTimer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3350422929174347171, guid: d14897c27df5c4a4592b57c1648f7dd2, type: 3}
+      propertyPath: spawns.Array.data[1].minSpawnTimer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4863500969782732186, guid: d14897c27df5c4a4592b57c1648f7dd2, type: 3}
       propertyPath: m_RootOrder
