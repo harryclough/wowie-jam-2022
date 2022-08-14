@@ -11,19 +11,20 @@ public class Spawn {
     public float maxSpawnTimer = 7f;
     public int packSize = 1;
     public float spawnTimer = 0;
-    public int spawnCount = 0;
+    [HideInInspector] public int spawnCount = 0;
 }
 
 public class WaveController : MonoBehaviour
 {
-    [SerializeField] float mapRadius = 50f;
-    [SerializeField] float spawnOffset = 5f;
-    public float waveDuration = 40f;
+    public static float mapRadius = 25f;
+    [SerializeField] float spawnOffset = 2.5f;
+    public float waveDuration = 45f;
     [SerializeField] float restDuration = 15f;
     public WaveState state;
     public float waveTimer;
     private float waveNumber = 0;
-
+    public GameObject boundaries;
+    private List<GameObject > liveSheep = new List<GameObject>();
 
     [SerializeField] List<Spawn> spawns = new List<Spawn>();
     [SerializeField] List<GameObject> flock = new List<GameObject>();
@@ -37,8 +38,16 @@ public class WaveController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        waveTimer = 10f;
+        waveTimer = restDuration;
+        setupBoundaries();
         beginPreWave();
+    }
+
+    // Function to setup the boundaries size, using the mapRadius
+    void setupBoundaries() {
+        boundaries.transform.localScale = new Vector3(mapRadius * 2, mapRadius * 2, 1);
+        // Set the CircleCollider radius to be the mapRadius + spawnOffset * 2
+        //boundaries.GetComponent<CircleCollider2D>().radius = mapRadius * 2;
     }
 
     // Update is called once per frame
@@ -102,6 +111,12 @@ public class WaveController : MonoBehaviour
     // Update during wave
     private void Wave()
     {
+        // Find how many sheep objects are alive
+        if (allSheepDead()){
+            //Restart the wave
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        };
+
         //Iterate through the list of spawns and deduct from their spawn timers. If they are 0, spawn an enemy and select a new random time.
         for (int i = 0; i < spawns.Count; i++)
         {
@@ -156,6 +171,20 @@ public class WaveController : MonoBehaviour
             float angle = Random.Range(0f, Mathf.PI * 2f);
             Vector3 pos = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0) * (mapRadius / 3);
             GameObject sheep = Instantiate(flock[i], flock[i].transform.position + pos, Quaternion.identity);
+            liveSheep.Add(sheep);
         }
+    }
+
+    // Check if all sheep are dead
+    public bool allSheepDead()
+    {
+        for (int i = 0; i < liveSheep.Count; i++)
+        {
+            if (liveSheep[i] != null)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }

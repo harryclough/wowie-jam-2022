@@ -50,11 +50,7 @@ public class BlueBoomManager : BoomManager
             }
         }
         //If no targets, die
-        chainedEnemiesSet.Clear();
-        chasing = false;
-        homing.SetTarget(null);
-        homing.enabled = false;
-        Destroy(this.gameObject);
+        Die();
     }
 
     // A function to sort a array of enemies by distance from the sheep and return the sorted array
@@ -112,6 +108,16 @@ public class BlueBoomManager : BoomManager
         if (chasing){
             Chase(obj);
         }
+    }
+
+    // public die function
+    public void Die()
+    {
+        chainedEnemiesSet.Clear();
+        chasing = false;
+        homing.SetTarget(null);
+        homing.enabled = false;
+        Destroy(this.gameObject);
     }
 }
 
