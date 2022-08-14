@@ -12,9 +12,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed = 5f;
     [SerializeField] private float pickupRadius = 3f;
 
-    [SerializeField] private Color fullColor;
-    [SerializeField] private Color fadedColor;
-
     [Header("Guns")]
     public Gun[] guns;
     public int currentGunIndex = 0;
@@ -25,6 +22,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         onGunChangedEvent?.Invoke(currentGunIndex, currentGunIndex, (currentGunIndex + 1) % guns.Length);
+        guns[currentGunIndex].playerSprite.SetActive(true);
     }
     
     void Update()
@@ -96,14 +94,6 @@ public class PlayerController : MonoBehaviour
         moveDirection.x = Input.GetAxisRaw("Horizontal");
         moveDirection.y = Input.GetAxisRaw("Vertical");
         moveDirection.Normalize();
-        Vector3 pos = transform.position + moveDirection * speed * Time.deltaTime;
-
-        //Check if player is within the boundaries of circle radius otherwise clamp the player to the circle
-        if (pos.magnitude > WaveController.mapRadius)
-        {
-            pos = pos.normalized * WaveController.mapRadius;
-        }
-        transform.position = pos;
-
+        transform.position += moveDirection * speed * Time.deltaTime;
     }
 }

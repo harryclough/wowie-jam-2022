@@ -210,6 +210,14 @@ PrefabInstance:
       propertyPath: spawns.Array.data[1].minSpawnTimer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 3838758322150168730, guid: d14897c27df5c4a4592b57c1648f7dd2, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838758322150168730, guid: d14897c27df5c4a4592b57c1648f7dd2, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1765895069
+      objectReference: {fileID: 0}
     - target: {fileID: 3926412176810986499, guid: d14897c27df5c4a4592b57c1648f7dd2, type: 3}
       propertyPath: m_LocalScale.x
       value: 50
@@ -427,6 +435,22 @@ PrefabInstance:
     - target: {fileID: 3838513121801328165, guid: e72870e6ab7baa8439c223253bbe9549, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838513122181664798, guid: e72870e6ab7baa8439c223253bbe9549, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838513122181664798, guid: e72870e6ab7baa8439c223253bbe9549, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6140629433853895387, guid: e72870e6ab7baa8439c223253bbe9549, type: 3}
+      propertyPath: m_Radius
+      value: 0.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 6371533720855737963, guid: e72870e6ab7baa8439c223253bbe9549, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e72870e6ab7baa8439c223253bbe9549, type: 3}

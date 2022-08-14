@@ -43,6 +43,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BG
+    uniqueID: 2529072227
+    locked: 0
   - name: Sheep
     uniqueID: 1636425733
     locked: 0

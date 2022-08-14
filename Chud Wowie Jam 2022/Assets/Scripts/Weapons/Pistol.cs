@@ -6,6 +6,6 @@ public class Pistol : Gun
 {
     protected override void Fire()
     {
-        Instantiate(bulletPrefab, transform.position, transform.rotation);
+        Instantiate(bulletPrefab, bulletSpawnPoint.position, transform.rotation);
     }
 }

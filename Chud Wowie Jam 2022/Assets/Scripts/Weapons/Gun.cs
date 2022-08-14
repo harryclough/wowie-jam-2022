@@ -9,8 +9,10 @@ public abstract class Gun : MonoBehaviour
     public float totalReloadTime = 1f;
 
     public GameObject bulletPrefab;
+    public Transform bulletSpawnPoint;
 
     public ParticleSystem[] muzzleFlashes;
+    public GameObject playerSprite;
 
     public Sprite gunIcon;
     public Sprite bulletIcon;
@@ -24,9 +26,12 @@ public abstract class Gun : MonoBehaviour
 
     void Start() {
         currentBullets = maxBullets;
+        playerSprite.SetActive(false);
     }
 
     public void OnSwitchTo() {
+        playerSprite.SetActive(true);
+
         if (currentBullets == 0 || isReloading()) {
             reload();
         } else {
@@ -35,6 +40,7 @@ public abstract class Gun : MonoBehaviour
     }
 
     public void OnSwitchOff() {
+        playerSprite.SetActive(false);
         reloadSource.Stop();
     }
 
