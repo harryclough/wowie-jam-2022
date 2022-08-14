@@ -38,7 +38,6 @@ public class SheepMarker : MonoBehaviour
         else
         {
             // If it's on screen, hide the marker
-            Debug.Log("OFFSCREEN");
             canvas.enabled = false;
             marker.SetActive(false);
             return;
@@ -59,9 +58,6 @@ public class SheepMarker : MonoBehaviour
         rt.localPosition = new Vector3(x, y, 0);
         rt = alert.GetComponent<RectTransform>();
         rt.localPosition = new Vector3(x, y, 0);
-
-
-
     }
 
 
@@ -71,12 +67,11 @@ public class SheepMarker : MonoBehaviour
         // Get the screen's top left and bottom right corners in the 2d world
         Vector3 topLeft = Camera.main.ScreenToWorldPoint(new Vector3(0, Screen.height, 0));
         Vector3 bottomRight = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0));
-        Debug.Log(topLeft.x + " " + topLeft.y + " " + bottomRight.x + " " + bottomRight.y);
-        Debug.Log(sheep.transform.position.x + " " + sheep.transform.position.y);
+        //Debug.Log(topLeft.x + " " + topLeft.y + " " + bottomRight.x + " " + bottomRight.y);
+        //Debug.Log(sheep.transform.position.x + " " + sheep.transform.position.y);
         // Check if the sheep is within the screen
         if (sheep.transform.position.x > topLeft.x && sheep.transform.position.x < bottomRight.x && sheep.transform.position.y < topLeft.y && sheep.transform.position.y > bottomRight.y)
         {
-            Debug.Log("True");
             return true;
         }
         else
