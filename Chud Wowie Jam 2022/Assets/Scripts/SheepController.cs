@@ -6,6 +6,7 @@ public class SheepController : MonoBehaviour, DeathController
 {
     // Bootmanager variable
     public BoomManager boomManager;
+    public RoamManager roamManager;
 
     public delegate void OnSheepUntargetableEvent(SheepController sheep);
     public OnSheepUntargetableEvent onSheepUntargetableEvent;
