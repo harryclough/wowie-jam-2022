@@ -45,9 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxBullets: 8
-  totalFireDelay: 0.5
-  totalReloadTime: 1
+  totalFireDelay: 0.4
+  totalReloadTime: 0.8
   bulletPrefab: {fileID: 5482941924855487754, guid: c2e99b34c02b6c445aa0803056f00839, type: 3}
+  muzzleFlashes: []
   currentBullets: 0
   fireTimer: 0
   reloadTimer: 0

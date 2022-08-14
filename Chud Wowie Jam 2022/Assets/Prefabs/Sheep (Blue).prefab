@@ -117,3 +117,17 @@ MonoBehaviour:
   chainRadius: 7
   speed: 15
   hitRadius: 0.1
+  homing: {fileID: 8153773544654349362}
+--- !u!114 &8153773544654349362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2280162242061636725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3de06dae783cf94b911a8dd745d380a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}

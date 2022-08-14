@@ -15,6 +15,7 @@ public class SheepController : MonoBehaviour
     public float targetPriority = 1f;
 
     public float enemySlowdown = 0.25f;
+    public float whistleForceMultiplier = 1f;
 
     private bool isTargetable = true;
     public bool IsTargetable
@@ -26,8 +27,7 @@ public class SheepController : MonoBehaviour
             if (isTargetable){
                 AlertEnemiesTargetable();
             }
-            else
-            {
+            else if (onSheepUntargetableEvent != null){
                 onSheepUntargetableEvent(this);
             }
         }
@@ -47,6 +47,12 @@ public class SheepController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+    public void Die()
+    {
+        IsTargetable = false;
+        Destroy(gameObject);
+    }
+
     // Boom method
     public void Boom()
     {
@@ -62,7 +68,7 @@ public class SheepController : MonoBehaviour
             return;
         }
         IsTargetable = false;
-        SharedPickUp(newParent);
+        PickUp(newParent);
     }
 
     public void PlayerPickUp(Transform newParent)
@@ -72,18 +78,27 @@ public class SheepController : MonoBehaviour
             Debug.LogWarning("Tried to pick up sheep that is already not targetable!");
             return;
         }
-        SharedPickUp(newParent);
+        PickUp(newParent);
     }
 
     public void EnemyDrop()
     {
         IsTargetable = true;
-        SharedCarryEnd();
+        PutDown();
     }
 
     public void PlayerDrop()
     {
-        SharedCarryEnd();
+        PutDown();
+    }
+
+    public void ApplyWhistleForce(Vector3 sourcePos, float maxForce, float minForce, float maxDistance)
+    {
+        Vector3 forceDirection = sourcePos - transform.position;
+        forceDirection.Normalize();
+        float distance = Vector3.Distance(sourcePos, transform.position);
+        float forceAmount = Mathf.Lerp(maxForce, minForce, distance / maxDistance);
+        rb.AddForce(forceDirection * forceAmount);
     }
 
     private void AlertEnemiesTargetable()
@@ -95,7 +110,7 @@ public class SheepController : MonoBehaviour
         }
     }
 
-    private void SharedPickUp(Transform newParent)
+    private void PickUp(Transform newParent)
     {
         rb.simulated = false;
         rb.velocity = Vector2.zero;
@@ -107,7 +122,7 @@ public class SheepController : MonoBehaviour
         gameObject.transform.localScale = Vector3.one;
     }
 
-    private void SharedCarryEnd()
+    private void PutDown()
     {
         rb.simulated = true;
 

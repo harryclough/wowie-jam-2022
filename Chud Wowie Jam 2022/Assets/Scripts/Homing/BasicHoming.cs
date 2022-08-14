@@ -2,16 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Homing : MonoBehaviour
+public class BasicHoming : Homing
 {
-    public GameObject target;
-
-    private void FixedUpdate() {
-        LookAt2D(target);
+    protected void FixedUpdate() {
+        LookAt2D();
     }
 
-    //A function that makes this object look at the target in 2D space so the where forward is up
-    void LookAt2D(GameObject target)
+    protected override void LookAt2D()
     {
         if (!target) {return;}
         Vector2 direction = target.transform.position - transform.position;
@@ -39,3 +36,4 @@ public class Homing : MonoBehaviour
         target = null;
     }
 }
+

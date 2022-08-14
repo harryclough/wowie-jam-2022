@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class EnemyController : MonoBehaviour, DeathController
 {
     public GameObject sprite;
+    public Rigidbody2D rb;
     public Homing homingScript;
     public HealthController healthController;
     public Transform pickedUpSheepPosition;
@@ -16,7 +17,7 @@ public abstract class EnemyController : MonoBehaviour, DeathController
 
     [HideInInspector] public SheepController carriedSheep = null;
 
-    private SheepController target;
+    protected SheepController target;
     public SheepController Target
     {
         get { return target; }
@@ -95,7 +96,7 @@ public abstract class EnemyController : MonoBehaviour, DeathController
         return distance / sheep.targetPriority;
     }
 
-    private void OnTargetUntargetable(SheepController sheep)
+    protected void OnTargetUntargetable(SheepController sheep)
     {
         if (!IsCarryingSheep() && sheep == Target)
         {
@@ -103,7 +104,19 @@ public abstract class EnemyController : MonoBehaviour, DeathController
         }   
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    protected void moveTowardsTarget(float speed)
+    {
+        moveTowardsPosition(target.transform.position, speed);
+    }
+
+    protected void moveTowardsPosition(Vector3 position, float speed)
+    {
+        Vector3 moveDirection = position - transform.position;
+        moveDirection.Normalize();
+        rb.MovePosition(transform.position + moveDirection * speed * Time.deltaTime);
+    }
+
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
         SheepController sheep = collision.gameObject.GetComponent<SheepController>();
         if (sheep && !IsCarryingSheep() && sheep.IsTargetable)

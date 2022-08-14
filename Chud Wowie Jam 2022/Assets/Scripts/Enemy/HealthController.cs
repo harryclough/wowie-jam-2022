@@ -5,8 +5,12 @@ using UnityEngine;
 public class HealthController : MonoBehaviour
 {
     public float maxHealth = 100f;
-    public float currentHealth = 100f;
-    public bool isDead = false;
+    [HideInInspector] public float currentHealth = 100f;
+
+    void Start()
+    {
+        currentHealth = maxHealth;
+    }
 
     public void Hit(float damage)
     {
