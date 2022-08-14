@@ -12,6 +12,18 @@ PrefabInstance:
       value: Sheep (Red)
       objectReference: {fileID: 0}
     - target: {fileID: 1149209592363605941, guid: e2b95bab179338748b866b3101d3a968, type: 3}
+      propertyPath: colour.b
+      value: 0.08449026
+      objectReference: {fileID: 0}
+    - target: {fileID: 1149209592363605941, guid: e2b95bab179338748b866b3101d3a968, type: 3}
+      propertyPath: colour.g
+      value: 0.08449026
+      objectReference: {fileID: 0}
+    - target: {fileID: 1149209592363605941, guid: e2b95bab179338748b866b3101d3a968, type: 3}
+      propertyPath: colour.r
+      value: 0.8396226
+      objectReference: {fileID: 0}
+    - target: {fileID: 1149209592363605941, guid: e2b95bab179338748b866b3101d3a968, type: 3}
       propertyPath: boomManager
       value: 
       objectReference: {fileID: 3101969619941829818}
@@ -24,12 +36,16 @@ PrefabInstance:
       value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 5130218777491796643, guid: e2b95bab179338748b866b3101d3a968, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ce5a85b3d5c1f424199f716b9e2c01ef, type: 3}
+    - target: {fileID: 5130218777491796643, guid: e2b95bab179338748b866b3101d3a968, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5130218777491796643, guid: e2b95bab179338748b866b3101d3a968, type: 3}
       propertyPath: m_Color.g
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5130218777491796643, guid: e2b95bab179338748b866b3101d3a968, type: 3}
       propertyPath: m_Color.r

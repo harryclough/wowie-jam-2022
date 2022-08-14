@@ -92,6 +92,7 @@ MonoBehaviour:
   targetPriority: 1
   enemySlowdown: 0.5
   whistleForceMultiplier: 1
+  colour: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &5281000421352939627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,7 +161,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &498692923776218122
 CanvasRenderer:
@@ -273,7 +274,7 @@ SpriteRenderer:
   m_SortingLayerID: 1636425733
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3e40c7914530deb459360c40e5f83d69, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dcea97d3cbbb89a4fa14624d84342b29, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -320,7 +321,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 25.4}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8599841185285900145
 CanvasRenderer:

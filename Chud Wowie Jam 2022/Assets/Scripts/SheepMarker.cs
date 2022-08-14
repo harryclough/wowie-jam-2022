@@ -16,7 +16,7 @@ public class SheepMarker : MonoBehaviour
     void Start()
     {
         //set marker colour to match the sprite colour
-        marker.GetComponent<Image>().color = sprite.GetComponent<SpriteRenderer>().color;
+        marker.GetComponent<Image>().color = sheep.colour;
     }
 
     // Update is called once per frame
@@ -40,6 +40,7 @@ public class SheepMarker : MonoBehaviour
             // If it's on screen, hide the marker
             canvas.enabled = false;
             marker.SetActive(false);
+            alert.SetActive(false);
             return;
         }
 

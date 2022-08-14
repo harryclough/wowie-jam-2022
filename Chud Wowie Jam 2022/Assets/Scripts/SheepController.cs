@@ -19,6 +19,8 @@ public class SheepController : MonoBehaviour, DeathController
 
     private bool isTargetable = true;
 
+    public Color colour;
+
     public bool IsTargetable{
         get { return isTargetable; }
         private set
