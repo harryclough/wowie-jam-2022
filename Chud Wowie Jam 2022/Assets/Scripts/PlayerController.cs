@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     {
         onGunChangedEvent?.Invoke(currentGunIndex, currentGunIndex, (currentGunIndex + 1) % guns.Length);
         guns[currentGunIndex].playerSprite.SetActive(true);
+        guns[currentGunIndex].reloadSource.Play();
     }
     
     void Update()

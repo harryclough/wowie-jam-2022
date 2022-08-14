@@ -46,6 +46,9 @@ TagManager:
   - name: BG
     uniqueID: 2529072227
     locked: 0
+  - name: AOE
+    uniqueID: 2792020149
+    locked: 0
   - name: Sheep
     uniqueID: 1636425733
     locked: 0

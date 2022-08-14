@@ -21,6 +21,8 @@ public class SheepController : MonoBehaviour, DeathController
 
     public Color colour;
 
+    public AudioSource[] pickupSounds;
+
     public bool IsTargetable{
         get { return isTargetable; }
         private set
@@ -40,7 +42,7 @@ public class SheepController : MonoBehaviour, DeathController
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             Boom();
         }
@@ -67,6 +69,12 @@ public class SheepController : MonoBehaviour, DeathController
         }
         IsTargetable = false;
         SharedPickUp(newParent);
+        if (pickupSounds.Length > 0)
+        {
+            AudioSource pickupSound = pickupSounds[Random.Range(0, pickupSounds.Length)];
+            pickupSound.pitch = Random.Range(0.9f, 1.25f);
+            pickupSound.Play();
+        }
     }
 
     public void PlayerPickUp(Transform newParent)

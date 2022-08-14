@@ -24,7 +24,7 @@ public abstract class Gun : MonoBehaviour
     [HideInInspector] public float fireTimer = 0f;
     [HideInInspector] public float reloadTimer = 0f;
 
-    void Start() {
+    void Awake() {
         currentBullets = maxBullets;
         playerSprite.SetActive(false);
     }

@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  maxDamage: 12
+  maxDamage: 14
   minDamage: 6
   lifeTime: 0.6
   knockBack: 800
