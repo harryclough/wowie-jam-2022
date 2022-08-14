@@ -7,17 +7,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4944860022018507873, guid: e2b95bab179338748b866b3101d3a968, type: 3}
+      propertyPath: m_Mass
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 128818544514105928, guid: e2b95bab179338748b866b3101d3a968, type: 3}
       propertyPath: m_Name
       value: Sheep (Blue)
       objectReference: {fileID: 0}
     - target: {fileID: 779261146362345360, guid: e2b95bab179338748b866b3101d3a968, type: 3}
       propertyPath: maxForce
-      value: 750
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 779261146362345360, guid: e2b95bab179338748b866b3101d3a968, type: 3}
       propertyPath: minForce
-      value: 600
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 779261146362345360, guid: e2b95bab179338748b866b3101d3a968, type: 3}
       propertyPath: maxRoamTimer
