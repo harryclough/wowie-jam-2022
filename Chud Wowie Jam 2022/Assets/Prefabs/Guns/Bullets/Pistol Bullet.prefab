@@ -133,7 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 18
   maxDamage: 60
-  minDamage: 45
+  minDamage: 40
   lifeTime: 0.8
 --- !u!50 &6518512145398965742
 Rigidbody2D:

@@ -36,16 +36,18 @@ public abstract class Gun : MonoBehaviour
         {
             reloadTimer -= Time.deltaTime;
         }
-        if (fireTimer > 0)
+        else if (fireTimer > 0)
         {
             fireTimer -= Time.deltaTime;
         }
+
         if (currentBullets == 0) {
             if (reloadTimer > 0) {
                 currentBullets = maxBullets;
             }
             else {
                 reloadTimer = totalReloadTime;
+                fireTimer = 0;
             }
         }
     }

@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 76092
+  controlID: 79075
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 76093
+  controlID: 79076
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 76030
+  controlID: 79077
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -580,7 +580,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 0071feff2494fefff65fffff5081ffff6081ffff3e83ffffc484ffff0cc0ffff24e7ffff4ee8ffff80e8ffff82e8ffff30ebffff1cedffff74edffff10f6ffffeef7ffff30f8ffffd6faffff447b00004c7b0000847b0000
+      m_ExpandedIDs: 0071feff2494fefff65fffff5081ffff6081ffff3e83ffffc484ffff0cc0ffff24e7ffff4ee8ffff80e8ffff82e8ffff30ebffff1cedffff74edffff10f6ffffeef7ffff30f8ffffd6faffff267b0000447b00004c7b0000847b0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -672,13 +672,13 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Prefabs/Guns/Bullets
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/Prefabs/Guns/Bullets
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\harry\Documents\Programming\JAMS\wowie-jam-2022\Chud
     Wowie Jam 2022
@@ -686,9 +686,9 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: e4600000
-    m_LastClickedID: 24804
-    m_ExpandedIDs: 00000000e4600000e6600000e8600000ea600000c02a010000ca9a3bffffff7f
+    m_SelectedIDs: 76700000
+    m_LastClickedID: 28790
+    m_ExpandedIDs: 00000000e4600000e6600000e8600000ea60000002610000c02a010000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -741,9 +741,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 4c7b0000
-    m_LastClickedInstanceID: 31564
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000cc2a0100c62a0100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -860,7 +860,7 @@ MonoBehaviour:
     m_CachedPref: 160
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: 31564
+  m_LastInspectedObjectInstanceID: -1
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
