@@ -88,14 +88,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 993943c2bcfcfea49856b673b569978f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 9027355339448327766}
   homingScript: {fileID: 710155129611786252}
   healthController: {fileID: 710155129611786253}
   pickedUpSheepPosition: {fileID: 6766594656441712102}
   speed: 4
   carriedSheep: {fileID: 0}
-  whistleMaxRange: 15
-  whistleActivationRange: 10
+  whistleMaxRadius: 8
+  whistleActivationRadius: 6
   whistleForce: 25
   whistleAreaIndicator: {fileID: 9027355339164059219}
 --- !u!114 &710155129611786253
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 710155129611786255}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b37961cb70aeae243aca1af6799e604d, type: 3}
+  m_Script: {fileID: 11500000, guid: d3de06dae783cf94b911a8dd745d380a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}

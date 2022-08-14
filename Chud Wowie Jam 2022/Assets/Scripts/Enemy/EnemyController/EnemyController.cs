@@ -102,7 +102,7 @@ public abstract class EnemyController : MonoBehaviour, DeathController
         GetComponent<Rigidbody2D>().MovePosition(transform.position + moveDirection * speed * Time.deltaTime);
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
         SheepController sheep = collision.gameObject.GetComponent<SheepController>();
         if (sheep && !IsCarryingSheep() && sheep.IsTargetable)

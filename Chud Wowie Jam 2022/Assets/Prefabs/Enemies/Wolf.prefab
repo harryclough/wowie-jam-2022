@@ -177,7 +177,6 @@ MonoBehaviour:
   pickedUpSheepPosition: {fileID: 7467432118206433286}
   speed: 3
   carriedSheep: {fileID: 0}
-  randomMoveVariance: 60
 --- !u!114 &3719017113732820461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,7 +200,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3719017113732820463}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b37961cb70aeae243aca1af6799e604d, type: 3}
+  m_Script: {fileID: 11500000, guid: d3de06dae783cf94b911a8dd745d380a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}

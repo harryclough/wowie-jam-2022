@@ -9,11 +9,11 @@ public class BlueBoomManager : BoomManager
     [SerializeField] float chainRadius = 2.5f;
     [SerializeField] float speed = 10f;
     [SerializeField] float hitRadius = 0.1f;
+    [SerializeField] Homing homing;
     // private List<Collider2D> chainedEnemies = new List<Collider2D>();
     private HashSet<Collider2D> chainedEnemiesSet = new HashSet<Collider2D>();
     private GameObject obj;
     private bool chasing;
-    private Homing homing;
 
     // Getter for chainRadius
     public float ChainRadius {
@@ -116,9 +116,7 @@ public class BlueBoomManager : BoomManager
         gameObject.transform.position += gameObject.transform.right * Time.deltaTime * speed;
     }
 
-    private void Start(){
-        // create a component Homing to this game object
-        homing = gameObject.AddComponent<Homing>();
+    private void Start() {
         homing.enabled = false;
     }
 

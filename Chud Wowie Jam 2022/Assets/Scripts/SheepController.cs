@@ -47,6 +47,12 @@ public class SheepController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+    public void Die()
+    {
+        isTargetable = false;
+        Destroy(gameObject);
+    }
+
     // Boom method
     public void Boom()
     {
