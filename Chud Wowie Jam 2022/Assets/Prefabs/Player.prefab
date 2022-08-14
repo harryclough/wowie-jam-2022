@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 98c439f807bea3e4387c99e5e4ced1bc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 979c47db352a4874f843257669747dd5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -111,8 +111,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 350.3, y: -184.9}
-  m_SizeDelta: {x: 75, y: 75}
+  m_AnchoredPosition: {x: 350, y: -175}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1752627595575620176
 CanvasRenderer:
@@ -187,7 +187,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 367.4, y: -135.1}
+  m_AnchoredPosition: {x: 375, y: -133.7}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5711075730241692142
@@ -211,14 +211,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.49411765}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.49019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 620559a8181fe8c4c88b7f282f4fd730, type: 3}
+  m_Sprite: {fileID: 21300000, guid: abced6494540fe145b23939e532a069c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -313,6 +313,8 @@ MonoBehaviour:
   maxSheepDistance: 25
   speed: 5
   pickupRadius: 3
+  fullColor: {r: 0, g: 0, b: 0, a: 0}
+  fadedColor: {r: 0, g: 0, b: 0, a: 0}
   guns:
   - {fileID: 7240311528377318962}
   - {fileID: 2134326481413198186}
@@ -639,6 +641,7 @@ MonoBehaviour:
   nextGunIcon: {fileID: 3996678992232511610}
   bulletIcon: {fileID: 1970561396979440157}
   bulletOffset: -20
+  bulletFadedColor: {r: 0, g: 0, b: 0, a: 0.49019608}
 --- !u!1001 &6517789678776038037
 PrefabInstance:
   m_ObjectHideFlags: 0

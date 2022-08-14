@@ -12,41 +12,56 @@ public class GunUi : MonoBehaviour
     [SerializeField] private Image bulletIcon;
     [SerializeField] public float bulletOffset;
 
-    private Image[] bulletIcons;
+    [SerializeField] private Color bulletFadedColor;
+
+    private Color bulletFullColor = Color.white;
+
+    private List<Image[]> bulletIcons;
 
     void Awake()
     {
         player.onGunChangedEvent += OnGunChanged;
         bulletIcon.gameObject.SetActive(false);
+
+        // For each gun, create an array of bullet icons
+        bulletIcons = new List<Image[]>();
+        foreach (Gun gun in player.guns)
+        {
+            bulletIcon.sprite = gun.bulletIcon;
+            Image[] icons = new Image[gun.maxBullets];
+            for (int i = 0; i < gun.maxBullets; i++)
+            {
+                icons[i] = Instantiate(bulletIcon);
+                icons[i].transform.SetParent(bulletIcon.transform.parent);
+                icons[i].transform.localScale = Vector3.one;
+                icons[i].transform.localPosition = bulletIcon.transform.localPosition + new Vector3(bulletOffset * i, 0, 0);
+            }
+            bulletIcons.Add(icons);
+        }
     }
 
-    void OnGunChanged(Gun newGun, Gun nextGun)
+    void OnGunChanged(int prevGunIndex, int currentGunIndex, int nextGunIndex)
     {
-        currentGunIcon.sprite = newGun.gunIcon;
-        nextGunIcon.sprite = nextGun.gunIcon;
-        bulletIcon.sprite = newGun.bulletIcon;
-
-        // Create an array of bullet icons by cloning the bullet icon and offsetting it
-        bulletIcons = new Image[newGun.maxBullets];
-        for (int i = 0; i < newGun.maxBullets; i++)
+        foreach (Image icons in bulletIcons[prevGunIndex])
         {
-            bulletIcons[i] = Instantiate(bulletIcon);
-            bulletIcons[i].transform.SetParent(bulletIcon.transform.parent);
-            bulletIcons[i].transform.localScale = Vector3.one;
-            bulletIcons[i].transform.localPosition = new Vector3(bulletIcon.transform.localPosition.x + bulletOffset * i, bulletIcon.transform.localPosition.y, bulletIcon.transform.localPosition.z);
-            bulletIcons[i].gameObject.SetActive(true);
+            icons.gameObject.SetActive(false);
         }
-
+        currentGunIcon.sprite = player.guns[currentGunIndex].gunIcon;
+        nextGunIcon.sprite = player.guns[nextGunIndex].gunIcon;
+        foreach (Image icons in bulletIcons[currentGunIndex])
+        {
+            icons.gameObject.SetActive(true);
+        }
     }
 
     void Update()
     {
-
-        for (int i = 0; i < player.guns[player.currentGunIndex].maxBullets; i++)
+        Gun gun = player.guns[player.currentGunIndex];
+        for (int i = 0; i < gun.maxBullets; i++)
         {
-            bool isBulletAvailable = i < player.guns[player.currentGunIndex].currentBullets;
-            bool isNotReloading = !player.guns[player.currentGunIndex].isReloading();
-            bulletIcons[i].gameObject.SetActive(isBulletAvailable && isNotReloading);
+            bool active = i < gun.currentBullets && !gun.isReloading();
+            Color color = active ? bulletFullColor : bulletFadedColor;
+            bulletIcons[player.currentGunIndex][i].color = color;
         }
     }
 }

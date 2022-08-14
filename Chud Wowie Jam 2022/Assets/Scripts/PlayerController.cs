@@ -12,16 +12,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed = 5f;
     [SerializeField] private float pickupRadius = 3f;
 
+    [SerializeField] private Color fullColor;
+    [SerializeField] private Color fadedColor;
+
     [Header("Guns")]
     public Gun[] guns;
     public int currentGunIndex = 0;
 
-    public delegate void OnGunChangedEvent(Gun newGun, Gun nextGun);
+    public delegate void OnGunChangedEvent(int prevGunIndex, int newGunIndex, int nextGunIndex);
     public OnGunChangedEvent onGunChangedEvent;
 
     void Start()
     {
-        onGunChangedEvent?.Invoke(guns[currentGunIndex], guns[(currentGunIndex + 1) % guns.Length]);
+        onGunChangedEvent?.Invoke(currentGunIndex, currentGunIndex, (currentGunIndex + 1) % guns.Length);
     }
     
     void Update()
@@ -43,10 +46,13 @@ public class PlayerController : MonoBehaviour
             if (guns.Length > 1) 
             {
                 guns[currentGunIndex].OnSwitchOff();
+
+                int prevGunIndex = currentGunIndex;
                 currentGunIndex = (currentGunIndex + 1) % guns.Length;
                 guns[currentGunIndex].OnSwitchTo();
+
                 int nextGunIndex = (currentGunIndex + 1) % guns.Length;
-                onGunChangedEvent?.Invoke(guns[currentGunIndex], guns[nextGunIndex]);
+                onGunChangedEvent?.Invoke(prevGunIndex, currentGunIndex, nextGunIndex);
             }
         } else {
             guns[currentGunIndex].UpdateReload();
