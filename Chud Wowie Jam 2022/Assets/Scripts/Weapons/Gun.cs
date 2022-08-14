@@ -12,6 +12,9 @@ public abstract class Gun : MonoBehaviour
 
     public ParticleSystem[] muzzleFlashes;
 
+    public Sprite gunIcon;
+    public Sprite bulletIcon;
+
     [HideInInspector] public int currentBullets;
     [HideInInspector] public float fireTimer = 0f;
     [HideInInspector] public float reloadTimer = 0f;
@@ -32,7 +35,7 @@ public abstract class Gun : MonoBehaviour
 
     public void UpdateReload()
     {
-        if (reloadTimer > 0)
+        if (isReloading())
         {
             reloadTimer -= Time.deltaTime;
         }
@@ -42,7 +45,7 @@ public abstract class Gun : MonoBehaviour
         }
 
         if (currentBullets == 0) {
-            if (reloadTimer > 0) {
+            if (isReloading()) {
                 currentBullets = maxBullets;
             }
             else {
@@ -53,7 +56,7 @@ public abstract class Gun : MonoBehaviour
     }
 
     public void TryToFire() {
-        if (currentBullets > 0 && fireTimer <= 0 && reloadTimer <= 0) {
+        if (currentBullets > 0 && fireTimer <= 0 && !isReloading()) {
             fireTimer = totalFireDelay;
             currentBullets--;
             Fire();
@@ -61,6 +64,10 @@ public abstract class Gun : MonoBehaviour
                 muzzleFlashes[Random.Range(0, muzzleFlashes.Length)].Play();
             }
         }
+    }
+
+    public bool isReloading() {
+        return reloadTimer > 0;
     }
 
     protected abstract void Fire();

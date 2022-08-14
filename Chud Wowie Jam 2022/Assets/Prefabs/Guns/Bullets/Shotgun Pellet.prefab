@@ -132,9 +132,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  maxDamage: 20
-  minDamage: 5
+  maxDamage: 12
+  minDamage: 6
   lifeTime: 0.6
+  knockBack: 800
 --- !u!50 &6518512145398965742
 Rigidbody2D:
   serializedVersion: 4

@@ -13,9 +13,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float pickupRadius = 3f;
 
     [Header("Guns")]
-    [SerializeField] private Gun[] guns;
-    [SerializeField] private int currentGunIndex = 0;
+    public Gun[] guns;
+    public int currentGunIndex = 0;
 
+    public delegate void OnGunChangedEvent(Gun newGun, Gun nextGun);
+    public OnGunChangedEvent onGunChangedEvent;
+
+    void Start()
+    {
+        onGunChangedEvent?.Invoke(guns[currentGunIndex], guns[(currentGunIndex + 1) % guns.Length]);
+    }
+    
     void Update()
     {
         // Rotate to face the mouse cursor
@@ -24,7 +32,7 @@ public class PlayerController : MonoBehaviour
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(mousePos);
         rotatingComponents.transform.rotation = Quaternion.LookRotation(Vector3.forward, mouseWorldPos - transform.position);
 
-        if (Input.GetAxis("Shoot") > 0)
+        if (Input.GetButtonDown("Shoot"))
         {
             guns[currentGunIndex].TryToFire();
         }
@@ -37,6 +45,8 @@ public class PlayerController : MonoBehaviour
                 guns[currentGunIndex].OnSwitchOff();
                 currentGunIndex = (currentGunIndex + 1) % guns.Length;
                 guns[currentGunIndex].OnSwitchTo();
+                int nextGunIndex = (currentGunIndex + 1) % guns.Length;
+                onGunChangedEvent?.Invoke(guns[currentGunIndex], guns[nextGunIndex]);
             }
         } else {
             guns[currentGunIndex].UpdateReload();

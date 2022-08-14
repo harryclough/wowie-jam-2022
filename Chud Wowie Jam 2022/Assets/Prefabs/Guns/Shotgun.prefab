@@ -46,18 +46,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxBullets: 2
-  totalFireDelay: 0.6
+  totalFireDelay: 0.5
   totalReloadTime: 1.2
   bulletPrefab: {fileID: 5482941924855487754, guid: b915650c6da86764fbb155e0425f7101, type: 3}
   muzzleFlashes:
   - {fileID: 611609522288467186}
   - {fileID: 3901260339656466711}
   - {fileID: 5988932387242097375}
+  gunIcon: {fileID: 21300000, guid: abced6494540fe145b23939e532a069c, type: 3}
+  bulletIcon: {fileID: 21300000, guid: 0f5afe0b6fc6cd7448dc1d481c22ec10, type: 3}
   currentBullets: 0
   fireTimer: 0
   reloadTimer: 0
-  pellets: 10
-  spreadInDegrees: 20
+  pellets: 16
+  spreadInDegrees: 30
 --- !u!1 &818223989851687720
 GameObject:
   m_ObjectHideFlags: 0

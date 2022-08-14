@@ -24,10 +24,12 @@ public class SheepController : MonoBehaviour
         private set
         {
             isTargetable = value;
-            if (isTargetable){
+            if (isTargetable)
+            {
                 AlertEnemiesTargetable();
             }
-            else if (onSheepUntargetableEvent != null){
+            else if (onSheepUntargetableEvent != null)
+            {
                 onSheepUntargetableEvent(this);
             }
         }

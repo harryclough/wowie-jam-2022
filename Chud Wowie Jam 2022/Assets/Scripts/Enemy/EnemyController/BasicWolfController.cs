@@ -25,6 +25,7 @@ public class BasicWolfController : EnemyController
         {
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             moveTowardsPosition(player.transform.position, speed);
+            homingScript.target = player;
         }
     }
 

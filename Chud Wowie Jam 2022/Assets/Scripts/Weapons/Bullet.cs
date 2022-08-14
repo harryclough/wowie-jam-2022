@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] protected float maxDamage = 50f;
     [SerializeField] protected float minDamage = 25f;
     [SerializeField] protected float lifeTime = 1f;
+    [SerializeField] protected float knockBack = 10f;
 
     protected float lifeTimeRemaining;
 
@@ -24,9 +25,14 @@ public class Bullet : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
-            float damage = Mathf.Lerp(minDamage, maxDamage, lifeTimeRemaining / lifeTime);
-            other.GetComponentInParent<HealthController>().Hit(damage);
-            Destroy(gameObject);
+            HealthController healthController = other.GetComponent<HealthController>();
+            if (healthController.currentHealth > 0)
+            {
+                float damage = Mathf.Lerp(minDamage, maxDamage, lifeTimeRemaining / lifeTime);
+                other.GetComponentInParent<Rigidbody2D>().AddForce(rb.velocity.normalized * knockBack);
+                healthController.Hit(damage);
+                Destroy(gameObject);
+            }
         }
     }
 
