@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private GameObject rotatingComponents;
+    [SerializeField] private CrosshairController crosshair;
     public Transform pickedUpSheepPosition;
 
     [Header("Sheep Interaction")]
@@ -89,10 +90,11 @@ public class PlayerController : MonoBehaviour
                     // Get the distance from the player to the sheep
                     float distance = direction.magnitude;
                     // If the distance is less than the max distance
-                    if (distance < maxSheepDistance)
+                    if (distance < pickupRadius)
                     {
                         sheep.PlayerPickUp(pickedUpSheepPosition);
                         carriedSheep = sheep;
+                        UpdateCrosshair(sheep);     
                     }
                 }
                 return;
@@ -122,6 +124,7 @@ public class PlayerController : MonoBehaviour
             else{
                 carriedSheep.PlayerDrop();
                 carriedSheep = null;
+                UpdateCrosshair(null);
             }
         }
 
@@ -138,5 +141,23 @@ public class PlayerController : MonoBehaviour
         transform.position = pos;
     
 
+    }
+
+    public void UpdateCrosshair(SheepController sheep){
+        if (sheep == null){ //If it's a gun now, set the crosshair to be the size of the gun
+            crosshair.SetColour(Color.white);
+            crosshair.SetScale(0.5f);
+            return;
+        }
+        // If sheep has a BlueBoomManager, set the scale based on the chain radius, otherwise use the blast radius
+        //set colour of crosshair's sprite to the sheep's colour
+        crosshair.SetColour(sheep.colour);
+        if (sheep.GetComponent<BlueBoomManager>())
+        {
+            crosshair.SetScale(sheep.GetComponent<BlueBoomManager>().ChainRadius);
+        }
+        else{ //Any other sheep
+            crosshair.SetScale(sheep.GetComponent<BoomManager>().BlastRadius); 
+        }
     }
 }

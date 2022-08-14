@@ -128,6 +128,7 @@ public abstract class EnemyController : MonoBehaviour, DeathController
                     //Player drops sheep
                     sheep.PlayerDrop();
                     player.carriedSheep = null;
+                    player.UpdateCrosshair(null);
                 }
             }
         }

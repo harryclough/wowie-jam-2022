@@ -234,6 +234,14 @@ PrefabInstance:
       propertyPath: spawns.Array.data[2].minSpawnTimer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 3838758322150168730, guid: d14897c27df5c4a4592b57c1648f7dd2, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838758322150168730, guid: d14897c27df5c4a4592b57c1648f7dd2, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1765895069
+      objectReference: {fileID: 0}
     - target: {fileID: 4863500969782732186, guid: d14897c27df5c4a4592b57c1648f7dd2, type: 3}
       propertyPath: m_RootOrder
       value: 1
