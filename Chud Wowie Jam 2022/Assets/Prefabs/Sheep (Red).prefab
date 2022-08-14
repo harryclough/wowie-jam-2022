@@ -109,6 +109,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5281000421352939627, guid: e2b95bab179338748b866b3101d3a968, type: 3}
+    - {fileID: 779261146362345360, guid: e2b95bab179338748b866b3101d3a968, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e2b95bab179338748b866b3101d3a968, type: 3}
 --- !u!1 &1720501410107912928 stripped
 GameObject:
@@ -130,3 +131,20 @@ MonoBehaviour:
   blastRadius: 10
   blastDamage: 250
   crosshair: 0
+--- !u!114 &4374800824746986897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1720501410107912928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2acc3a91117069540b4e9348b15f885f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minRoamTimer: 0.4
+  maxRoamTimer: 1
+  minForce: 300
+  maxForce: 500
+  fleeRange: 4
