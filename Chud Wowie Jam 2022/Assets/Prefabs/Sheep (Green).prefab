@@ -7,9 +7,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4944860022018507873, guid: e2b95bab179338748b866b3101d3a968, type: 3}
+      propertyPath: m_Mass
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 128818544514105928, guid: e2b95bab179338748b866b3101d3a968, type: 3}
       propertyPath: m_Name
       value: Sheep (Green)
+      objectReference: {fileID: 0}
+    - target: {fileID: 779261146362345360, guid: e2b95bab179338748b866b3101d3a968, type: 3}
+      propertyPath: maxForce
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 779261146362345360, guid: e2b95bab179338748b866b3101d3a968, type: 3}
+      propertyPath: minForce
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1149209592363605941, guid: e2b95bab179338748b866b3101d3a968, type: 3}
       propertyPath: colour.b

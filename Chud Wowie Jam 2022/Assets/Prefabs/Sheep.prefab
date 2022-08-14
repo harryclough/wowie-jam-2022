@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1149209592363605941}
   - component: {fileID: 5281000421352939627}
   - component: {fileID: 4628658930578537245}
+  - component: {fileID: 779261146362345360}
   m_Layer: 0
   m_Name: Sheep
   m_TagString: Sheep
@@ -88,6 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boomManager: {fileID: 5281000421352939627}
+  roamManager: {fileID: 0}
   rb: {fileID: -4944860022018507873}
   targetPriority: 1
   enemySlowdown: 0.5
@@ -125,6 +127,22 @@ MonoBehaviour:
   marker: {fileID: 968940802141680889}
   alert: {fileID: 9091023334844505031}
   sprite: {fileID: 7980833586253166279}
+--- !u!114 &779261146362345360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128818544514105928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a18eb7a67469fb042b6a022a85f602d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minRoamTimer: 0.5
+  maxRoamTimer: 1.5
+  minForce: 50
+  maxForce: 300
 --- !u!1 &968940802141680889
 GameObject:
   m_ObjectHideFlags: 0
