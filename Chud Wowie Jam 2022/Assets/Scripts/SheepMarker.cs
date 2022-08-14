@@ -54,7 +54,7 @@ public class SheepMarker : MonoBehaviour
         // Get the rectransform of the marker
         RectTransform rt = marker.GetComponent<RectTransform>();
         // Get the x and y of the angle on a circle of radius the canvas width
-        float x = Mathf.Cos(angle * Mathf.Deg2Rad) * canvas.GetComponent<RectTransform>().rect.width / 2.5f;
+        float x = Mathf.Cos(angle * Mathf.Deg2Rad) * canvas.GetComponent<RectTransform>().rect.height / 2.5f;
         float y = Mathf.Sin(angle * Mathf.Deg2Rad) * canvas.GetComponent<RectTransform>().rect.height / 2.5f;
         rt.localPosition = new Vector3(x, y, 0);
         rt = alert.GetComponent<RectTransform>();
