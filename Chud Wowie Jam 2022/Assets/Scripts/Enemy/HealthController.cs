@@ -7,6 +7,11 @@ public class HealthController : MonoBehaviour
     public float maxHealth = 100f;
     [HideInInspector] public float currentHealth = 100f;
 
+    void Start()
+    {
+        currentHealth = maxHealth;
+    }
+
     public void Hit(float damage)
     {
         currentHealth -= damage;

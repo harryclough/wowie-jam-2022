@@ -131,10 +131,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f078fb6d6f9bef349ba13e083240a6fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 16
-  maxDamage: 50
-  minDamage: 50
-  lifeTime: 0.6
+  speed: 18
+  maxDamage: 60
+  minDamage: 45
+  lifeTime: 0.8
 --- !u!50 &6518512145398965742
 Rigidbody2D:
   serializedVersion: 4

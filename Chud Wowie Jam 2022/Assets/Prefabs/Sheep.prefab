@@ -88,7 +88,8 @@ MonoBehaviour:
   boomManager: {fileID: 5281000421352939627}
   rb: {fileID: -4944860022018507873}
   targetPriority: 1
-  enemySlowdown: 0.25
+  enemySlowdown: 0.333
+  whistleForceMultiplier: 1
 --- !u!114 &5281000421352939627
 MonoBehaviour:
   m_ObjectHideFlags: 0

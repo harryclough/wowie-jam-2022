@@ -35,6 +35,11 @@ public class PoacherController : EnemyController
                 moveTowardsTarget(speed);
             }
         }
+        else
+        {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            moveTowardsPosition(player.transform.position, speed);
+        }
     }
 
     private void Whistle() {

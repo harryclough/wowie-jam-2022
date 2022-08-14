@@ -8,8 +8,9 @@ public abstract class Gun : MonoBehaviour
     public float totalFireDelay = 1f;
     public float totalReloadTime = 1f;
 
-    [Header("Bullets")]
     public GameObject bulletPrefab;
+
+    public ParticleSystem[] muzzleFlashes;
 
     [HideInInspector] public int currentBullets;
     [HideInInspector] public float fireTimer = 0f;
@@ -54,8 +55,12 @@ public abstract class Gun : MonoBehaviour
             fireTimer = totalFireDelay;
             currentBullets--;
             Fire();
+            if (muzzleFlashes.Length > 0) {
+                muzzleFlashes[Random.Range(0, muzzleFlashes.Length)].Play();
+            }
         }
     }
 
     protected abstract void Fire();
+
 }

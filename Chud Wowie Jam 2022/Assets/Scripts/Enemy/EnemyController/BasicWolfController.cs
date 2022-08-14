@@ -15,11 +15,16 @@ public class BasicWolfController : EnemyController
     public void FixedUpdate() {
         if (IsCarryingSheep()) {
             float currentSpeed = speed * carriedSheep.enemySlowdown * Time.deltaTime;
-            GetComponent<Rigidbody2D>().MovePosition(transform.position + transform.right * currentSpeed);
+            rb.MovePosition(transform.position + transform.right * currentSpeed);
         }
         else if (Target)
         {
             moveTowardsTarget(speed);
+        }
+        else
+        {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            moveTowardsPosition(player.transform.position, speed);
         }
     }
 

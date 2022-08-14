@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class EnemyController : MonoBehaviour, DeathController
 {
     public GameObject sprite;
+    public Rigidbody2D rb;
     public Homing homingScript;
     public HealthController healthController;
     public Transform pickedUpSheepPosition;
@@ -96,10 +97,16 @@ public abstract class EnemyController : MonoBehaviour, DeathController
         }   
     }
 
-    protected void moveTowardsTarget(float speed) {
-        Vector3 moveDirection = target.transform.position - transform.position;
+    protected void moveTowardsTarget(float speed)
+    {
+        moveTowardsPosition(target.transform.position, speed);
+    }
+
+    protected void moveTowardsPosition(Vector3 position, float speed)
+    {
+        Vector3 moveDirection = position - transform.position;
         moveDirection.Normalize();
-        GetComponent<Rigidbody2D>().MovePosition(transform.position + moveDirection * speed * Time.deltaTime);
+        rb.MovePosition(transform.position + moveDirection * speed * Time.deltaTime);
     }
 
     protected virtual void OnCollisionEnter2D(Collision2D collision)

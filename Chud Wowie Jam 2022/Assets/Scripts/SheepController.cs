@@ -49,7 +49,7 @@ public class SheepController : MonoBehaviour
 
     public void Die()
     {
-        isTargetable = false;
+        IsTargetable = false;
         Destroy(gameObject);
     }
 
