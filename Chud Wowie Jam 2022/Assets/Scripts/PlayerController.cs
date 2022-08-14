@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private GameObject rotatingComponents;
+    public Transform pickedUpSheepPosition;
 
     [Header("Sheep Interaction")]
     [SerializeField] private float maxSheepForce = 100f;
@@ -15,6 +16,8 @@ public class PlayerController : MonoBehaviour
     [Header("Guns")]
     [SerializeField] private Gun[] guns;
     [SerializeField] private int currentGunIndex = 0;
+
+    [HideInInspector] public SheepController carriedSheep = null;
 
     void Update()
     {
@@ -58,8 +61,22 @@ public class PlayerController : MonoBehaviour
             // If the game object is a sheep
             if (hitColliders[i].tag == "Sheep")
             {
-                // Set the sheep to be the selected sheep
-                // hitColliders[i].GetComponent<SheepController>().SetSelected(true);
+                SheepController sheep = hitColliders[i].GetComponent<SheepController>();
+                // If the sheep is not already being carried
+                if (sheep.IsTargetable)
+                {
+                    // Get the direction from the player to the sheep
+                    Vector3 direction = sheep.transform.position - transform.position;
+                    // Get the distance from the player to the sheep
+                    float distance = direction.magnitude;
+                    // If the distance is less than the max distance
+                    if (distance < maxSheepDistance)
+                    {
+                        sheep.PlayerPickUp(pickedUpSheepPosition);
+                        carriedSheep = sheep;
+                    }
+                }
+                return;
             }
         }
     }
@@ -73,6 +90,18 @@ public class PlayerController : MonoBehaviour
             {
                 SheepController sheepController = sheepObject.GetComponent<SheepController>();
                 sheepController.ApplyWhistleForce(transform.position, maxSheepForce, 0f, maxSheepDistance);
+            }
+        }
+
+        if (Input.GetButtonDown("Pickup Sheep"))
+        {
+            if (carriedSheep == null)
+            {
+                SelectSheep();
+            }
+            else{
+                carriedSheep.PlayerDrop();
+                carriedSheep = null;
             }
         }
 

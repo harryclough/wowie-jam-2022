@@ -119,6 +119,18 @@ public abstract class EnemyController : MonoBehaviour, DeathController
     protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
         SheepController sheep = collision.gameObject.GetComponent<SheepController>();
+        if (sheep != null)
+        {
+            PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+            if (player != null){ //If you hit a player
+                sheep = player.carriedSheep;
+                if (player.carriedSheep != null){ //If the player has a sheep
+                    //Player drops sheep
+                    sheep.PlayerDrop();
+                    player.carriedSheep = null;
+                }
+            }
+        }
         if (sheep && !IsCarryingSheep() && sheep.IsTargetable)
         {
             carriedSheep = sheep;
