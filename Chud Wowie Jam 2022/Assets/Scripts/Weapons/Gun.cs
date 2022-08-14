@@ -15,6 +15,9 @@ public abstract class Gun : MonoBehaviour
     public Sprite gunIcon;
     public Sprite bulletIcon;
 
+    public AudioClip[] fireSounds;
+    public AudioSource reloadSource;
+
     [HideInInspector] public int currentBullets;
     [HideInInspector] public float fireTimer = 0f;
     [HideInInspector] public float reloadTimer = 0f;
@@ -24,17 +27,24 @@ public abstract class Gun : MonoBehaviour
     }
 
     public void OnSwitchTo() {
-        if (currentBullets == 0) {
-            reloadTimer = totalReloadTime;
+        if (currentBullets == 0 || isReloading()) {
+            reload();
         } else {
             fireTimer = totalFireDelay;
         }
     }
 
-    public void OnSwitchOff() { }
+    public void OnSwitchOff() {
+        reloadSource.Stop();
+    }
 
     public void UpdateReload()
     {
+        if (Input.GetButtonDown("Reload"))
+        {
+            currentBullets = 0;
+        }
+
         if (isReloading())
         {
             reloadTimer -= Time.deltaTime;
@@ -49,8 +59,7 @@ public abstract class Gun : MonoBehaviour
                 currentBullets = maxBullets;
             }
             else {
-                reloadTimer = totalReloadTime;
-                fireTimer = 0;
+                reload();
             }
         }
     }
@@ -63,6 +72,10 @@ public abstract class Gun : MonoBehaviour
             if (muzzleFlashes.Length > 0) {
                 muzzleFlashes[Random.Range(0, muzzleFlashes.Length)].Play();
             }
+            if (fireSounds.Length > 0) {
+                // Play a random sound from the array
+                AudioSource.PlayClipAtPoint(fireSounds[Random.Range(0, fireSounds.Length)], transform.position, Random.Range(0.85f, 1.15f));
+            }
         }
     }
 
@@ -71,5 +84,13 @@ public abstract class Gun : MonoBehaviour
     }
 
     protected abstract void Fire();
+
+    protected void reload()
+    {
+        reloadTimer = totalReloadTime;
+        fireTimer = 0;
+        reloadSource.pitch = Random.Range(0.95f, 1.05f);
+        reloadSource.Play();
+    }
 
 }

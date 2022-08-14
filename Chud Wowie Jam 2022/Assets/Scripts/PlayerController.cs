@@ -96,6 +96,14 @@ public class PlayerController : MonoBehaviour
         moveDirection.x = Input.GetAxisRaw("Horizontal");
         moveDirection.y = Input.GetAxisRaw("Vertical");
         moveDirection.Normalize();
-        transform.position += moveDirection * speed * Time.deltaTime;
+        Vector3 pos = transform.position + moveDirection * speed * Time.deltaTime;
+
+        //Check if player is within the boundaries of circle radius otherwise clamp the player to the circle
+        if (pos.magnitude > WaveController.mapRadius)
+        {
+            pos = pos.normalized * WaveController.mapRadius;
+        }
+        transform.position = pos;
+
     }
 }

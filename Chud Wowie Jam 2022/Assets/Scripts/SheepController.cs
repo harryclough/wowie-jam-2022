@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SheepController : MonoBehaviour
+public class SheepController : MonoBehaviour, DeathController
 {
     // Bootmanager variable
     public BoomManager boomManager;
@@ -18,8 +18,10 @@ public class SheepController : MonoBehaviour
     public float whistleForceMultiplier = 1f;
 
     private bool isTargetable = true;
-    public bool IsTargetable
-    {
+
+    public Color colour;
+
+    public bool IsTargetable{
         get { return isTargetable; }
         private set
         {
@@ -49,12 +51,6 @@ public class SheepController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    public void Die()
-    {
-        IsTargetable = false;
-        Destroy(gameObject);
-    }
-
     // Boom method
     public void Boom()
     {
@@ -70,7 +66,7 @@ public class SheepController : MonoBehaviour
             return;
         }
         IsTargetable = false;
-        PickUp(newParent);
+        SharedPickUp(newParent);
     }
 
     public void PlayerPickUp(Transform newParent)
@@ -80,18 +76,23 @@ public class SheepController : MonoBehaviour
             Debug.LogWarning("Tried to pick up sheep that is already not targetable!");
             return;
         }
-        PickUp(newParent);
+        SharedPickUp(newParent);
     }
 
     public void EnemyDrop()
     {
+        // Check if dropped out of bounds of the ring
+        if (transform.position.magnitude > WaveController.mapRadius)
+        {
+            Die();
+        }
         IsTargetable = true;
-        PutDown();
+        SharedCarryEnd();
     }
 
     public void PlayerDrop()
     {
-        PutDown();
+        SharedCarryEnd();
     }
 
     public void ApplyWhistleForce(Vector3 sourcePos, float maxForce, float minForce, float maxDistance)
@@ -112,7 +113,7 @@ public class SheepController : MonoBehaviour
         }
     }
 
-    private void PickUp(Transform newParent)
+    private void SharedPickUp(Transform newParent)
     {
         rb.simulated = false;
         rb.velocity = Vector2.zero;
@@ -124,11 +125,22 @@ public class SheepController : MonoBehaviour
         gameObject.transform.localScale = Vector3.one;
     }
 
-    private void PutDown()
+    private void SharedCarryEnd()
     {
         rb.simulated = true;
 
         gameObject.transform.parent = null;
         gameObject.transform.localScale = Vector3.one;
+    }
+
+    //Implement deathcontroller die
+    public void Die()
+    {
+        IsTargetable = false;
+        if (GetComponent<BlueBoomManager>()){
+            GetComponent<BlueBoomManager>().Die();
+            return;
+        }
+        Destroy(gameObject);
     }
 }
