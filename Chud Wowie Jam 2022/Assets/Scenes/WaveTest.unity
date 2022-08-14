@@ -209,7 +209,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3350422929174347171, guid: d14897c27df5c4a4592b57c1648f7dd2, type: 3}
       propertyPath: mapRadius
-      value: 30
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 3350422929174347171, guid: d14897c27df5c4a4592b57c1648f7dd2, type: 3}
+      propertyPath: waveTimer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3350422929174347171, guid: d14897c27df5c4a4592b57c1648f7dd2, type: 3}
+      propertyPath: spawnOffset
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3350422929174347171, guid: d14897c27df5c4a4592b57c1648f7dd2, type: 3}
+      propertyPath: waveDuration
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 3350422929174347171, guid: d14897c27df5c4a4592b57c1648f7dd2, type: 3}
       propertyPath: flock.Array.size
@@ -226,7 +238,7 @@ PrefabInstance:
     - target: {fileID: 3350422929174347171, guid: d14897c27df5c4a4592b57c1648f7dd2, type: 3}
       propertyPath: flock.Array.data[1]
       value: 
-      objectReference: {fileID: 128818544514105928, guid: e2b95bab179338748b866b3101d3a968, type: 3}
+      objectReference: {fileID: 1856274679133913958, guid: 2e92bf95418dc2a45aa72893072a6251, type: 3}
     - target: {fileID: 3350422929174347171, guid: d14897c27df5c4a4592b57c1648f7dd2, type: 3}
       propertyPath: flock.Array.data[2]
       value: 
@@ -234,7 +246,7 @@ PrefabInstance:
     - target: {fileID: 3350422929174347171, guid: d14897c27df5c4a4592b57c1648f7dd2, type: 3}
       propertyPath: flock.Array.data[3]
       value: 
-      objectReference: {fileID: 1720501410107912928, guid: 73c416cfa5c852d41a131be23f80d7ec, type: 3}
+      objectReference: {fileID: 7819820839739668918, guid: a5e725b6056ef504c9f4b8a787739ea3, type: 3}
     - target: {fileID: 3350422929174347171, guid: d14897c27df5c4a4592b57c1648f7dd2, type: 3}
       propertyPath: flock.Array.data[4]
       value: 
@@ -249,7 +261,7 @@ PrefabInstance:
       objectReference: {fileID: 3719017113732820463, guid: 097982ccc27c81b46ac4500aea2e2133, type: 3}
     - target: {fileID: 3350422929174347171, guid: d14897c27df5c4a4592b57c1648f7dd2, type: 3}
       propertyPath: spawns.Array.data[0].maxSpawn
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3350422929174347171, guid: d14897c27df5c4a4592b57c1648f7dd2, type: 3}
       propertyPath: spawns.Array.data[0].packSize
@@ -257,7 +269,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3350422929174347171, guid: d14897c27df5c4a4592b57c1648f7dd2, type: 3}
       propertyPath: spawns.Array.data[1].maxSpawn
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3350422929174347171, guid: d14897c27df5c4a4592b57c1648f7dd2, type: 3}
       propertyPath: spawns.Array.data[1].packSize
