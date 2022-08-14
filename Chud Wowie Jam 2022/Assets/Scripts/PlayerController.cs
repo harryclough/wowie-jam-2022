@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private GameObject rotatingComponents;
+    public Transform pickedUpSheepPosition;
 
     [Header("Sheep Interaction")]
     [SerializeField] private float maxSheepForce = 100f;
@@ -16,8 +17,11 @@ public class PlayerController : MonoBehaviour
     public Gun[] guns;
     public int currentGunIndex = 0;
 
+    [HideInInspector] public SheepController carriedSheep = null;
+
     public delegate void OnGunChangedEvent(int prevGunIndex, int newGunIndex, int nextGunIndex);
     public OnGunChangedEvent onGunChangedEvent;
+    private bool pressedPickup = false;
 
     void Start()
     {
@@ -36,6 +40,10 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Shoot"))
         {
             guns[currentGunIndex].TryToFire();
+        }
+
+        if (Input.GetButtonDown("Pickup Sheep")){
+            pressedPickup = true;
         }
         
         // Toggle gun when "Switch Gun" is pressed
@@ -72,8 +80,22 @@ public class PlayerController : MonoBehaviour
             // If the game object is a sheep
             if (hitColliders[i].tag == "Sheep")
             {
-                // Set the sheep to be the selected sheep
-                // hitColliders[i].GetComponent<SheepController>().SetSelected(true);
+                SheepController sheep = hitColliders[i].GetComponent<SheepController>();
+                // If the sheep is not already being carried
+                if (sheep.IsTargetable)
+                {
+                    // Get the direction from the player to the sheep
+                    Vector3 direction = sheep.transform.position - transform.position;
+                    // Get the distance from the player to the sheep
+                    float distance = direction.magnitude;
+                    // If the distance is less than the max distance
+                    if (distance < maxSheepDistance)
+                    {
+                        sheep.PlayerPickUp(pickedUpSheepPosition);
+                        carriedSheep = sheep;
+                    }
+                }
+                return;
             }
         }
     }
@@ -90,10 +112,31 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        if (pressedPickup)
+        {
+            pressedPickup = false;
+            if (carriedSheep == null)
+            {
+                SelectSheep();
+            }
+            else{
+                carriedSheep.PlayerDrop();
+                carriedSheep = null;
+            }
+        }
+
         Vector3 moveDirection = Vector3.zero;
         moveDirection.x = Input.GetAxisRaw("Horizontal");
         moveDirection.y = Input.GetAxisRaw("Vertical");
         moveDirection.Normalize();
-        transform.position += moveDirection * speed * Time.deltaTime;
+        Vector3 pos = transform.position + moveDirection * speed * Time.deltaTime;
+        //Check if pos is within the radius of the map using the map bounds
+        if (pos.magnitude > WaveController.mapRadius){
+            //clamp the player to the circle of the map
+            pos = pos.normalized * WaveController.mapRadius;
+        }
+        transform.position = pos;
+    
+
     }
 }
