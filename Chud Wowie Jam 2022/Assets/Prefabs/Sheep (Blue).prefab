@@ -15,6 +15,14 @@ PrefabInstance:
       propertyPath: boomManager
       value: 
       objectReference: {fileID: 8242902532145044509}
+    - target: {fileID: 1149209592363605941, guid: e2b95bab179338748b866b3101d3a968, type: 3}
+      propertyPath: enemySlowdown
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1149209592363605941, guid: e2b95bab179338748b866b3101d3a968, type: 3}
+      propertyPath: targetPriority
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5130218777491796643, guid: e2b95bab179338748b866b3101d3a968, type: 3}
       propertyPath: m_Color.b
       value: 1
