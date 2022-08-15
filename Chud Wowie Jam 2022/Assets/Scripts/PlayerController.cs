@@ -41,7 +41,12 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Shoot"))
         {
-            guns[currentGunIndex].TryToFire();
+            if (carriedSheep == null){
+                guns[currentGunIndex].TryToFire();
+            }
+            else {
+                throwSheep();
+            }
         }
 
         if (Input.GetButtonDown("Pickup Sheep")){
@@ -160,5 +165,14 @@ public class PlayerController : MonoBehaviour
         else{ //Any other sheep
             crosshair.SetScale(sheep.GetComponent<BoomManager>().BlastRadius); 
         }
+    }
+
+    // Drop sheep and activate sheep throw with the position of the mouse in world space
+    void throwSheep()
+    {
+        carriedSheep.PlayerDrop();
+        carriedSheep.Throw(crosshair.transform.position);
+        carriedSheep = null;
+        UpdateCrosshair(null);
     }
 }

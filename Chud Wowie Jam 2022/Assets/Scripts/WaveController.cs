@@ -94,10 +94,11 @@ public class WaveController : MonoBehaviour
         // Get a random angle
         float angle = Random.Range(0f, Mathf.PI * 2f);
         // Get a random position on the circle
-        Vector3 pos = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0) * (mapRadius + spawnOffset);
+        
         // Instantiate the enemy at the position
         for (int i = 0; i < amount; i++)
         {
+            Vector3 pos = new Vector3(Mathf.Cos(angle+i*0.01f), Mathf.Sin(angle+i*0.01f), 0) * (mapRadius + spawnOffset);
             GameObject enemy = Instantiate(spawn, spawn.transform.position + pos, Quaternion.identity);
         }
     }

@@ -128,8 +128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d934c0c0006e3344ab778e7194e5039, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blastRadius: 10
-  blastDamage: 250
+  blastRadius: 7.5
+  blastDamage: 200
   crosshair: 0
 --- !u!114 &4374800824746986897
 MonoBehaviour:

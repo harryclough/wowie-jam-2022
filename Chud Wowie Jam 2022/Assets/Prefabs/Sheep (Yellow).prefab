@@ -127,6 +127,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58106e13f54b6f1488b63e5eebf814bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blastRadius: 2.5
-  blastDamage: 100
+  blastRadius: 5
+  blastDamage: 150
   crosshair: 0

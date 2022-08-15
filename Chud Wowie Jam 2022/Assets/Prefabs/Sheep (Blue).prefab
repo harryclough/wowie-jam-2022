@@ -163,7 +163,7 @@ MonoBehaviour:
   blastRadius: 1
   blastDamage: 50
   crosshair: 0
-  chainRadius: 7
+  chainRadius: 4.5
   speed: 15
   hitRadius: 0.1
   homing: {fileID: 8153773544654349362}

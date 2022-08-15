@@ -18,6 +18,9 @@ public class SheepController : MonoBehaviour, DeathController
     public float whistleForceMultiplier = 1f;
 
     private bool isTargetable = true;
+    private bool isThrown = false;
+    private Vector3 thrownTarget;
+    public float throwSpeed = 10f;
 
     public Color colour;
 
@@ -43,6 +46,18 @@ public class SheepController : MonoBehaviour, DeathController
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            Boom();
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (isThrown){
+            rb.velocity = (thrownTarget - transform.position).normalized * throwSpeed;
+        }
+        //if reached target position, boom
+        if (Vector3.Distance(transform.position, thrownTarget) < 0.1f)
         {
             Boom();
         }
@@ -150,5 +165,18 @@ public class SheepController : MonoBehaviour, DeathController
             return;
         }
         Destroy(gameObject);
+    }
+
+    public void Throw(Vector3 target){
+        isThrown = true;
+        rb.simulated = true;
+        GetComponent<CircleCollider2D>().enabled = false;
+        // rotate to face the target in 2d
+        thrownTarget = target;
+        Vector2 target2d = new Vector2(target.x, target.y);
+        Vector2 sheep2d = new Vector2(transform.position.x, transform.position.y);
+        Vector2 direction = target2d - sheep2d;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 }
