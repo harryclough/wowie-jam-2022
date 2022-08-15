@@ -52,13 +52,13 @@ public class BoomManager : MonoBehaviour {
             GetComponent<ParticleSystemRenderer>().lengthScale = blastRadius;
         }
         //set colour of boom particles to be the colour from the sheep controller
-        var main = boomParticles.main;
+        var main = GetComponent<ParticleSystem>().main;
         // set particlesystemrenderer map colour
         GetComponent<ParticleSystemRenderer>().material.color = gameObject.GetComponent<SheepController>().colour;
         main.startSize = blastRadius*2;
 
         //play the particle system
-        boomParticles.Play();
+        GetComponent<ParticleSystem>().Play();
 
         int i = 0;
         //Debug.Log("HitColliders length: " + hitColliders.Length);

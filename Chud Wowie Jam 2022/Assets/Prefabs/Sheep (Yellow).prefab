@@ -143,12 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58106e13f54b6f1488b63e5eebf814bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blastRadius: 5
-  blastDamage: 150
-  boomParticles: {fileID: 8196023390659840875}
+  blastRadius: 1
+  blastDamage: 1500
+  boomParticles: {fileID: 0}
   crosshair: 0
---- !u!198 &8196023390659840875 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 7617126206814145093, guid: e2b95bab179338748b866b3101d3a968, type: 3}
-  m_PrefabInstance: {fileID: 1732593058319122734}
-  m_PrefabAsset: {fileID: 0}

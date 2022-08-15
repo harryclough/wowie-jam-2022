@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Sheep
   - Enemy
+  - MusicController
   layers:
   - Default
   - TransparentFX

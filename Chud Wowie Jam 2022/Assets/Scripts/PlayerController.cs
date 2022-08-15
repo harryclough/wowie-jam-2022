@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
         onGunChangedEvent?.Invoke(currentGunIndex, currentGunIndex, (currentGunIndex + 1) % guns.Length);
         guns[currentGunIndex].playerSprite.SetActive(true);
         guns[currentGunIndex].reloadSource.Play();
+        UpdateCrosshair(null);
     }
     
     void Update()
@@ -156,8 +157,8 @@ public class PlayerController : MonoBehaviour
 
     public void UpdateCrosshair(SheepController sheep){
         if (sheep == null){ //If it's a gun now, set the crosshair to be the size of the gun
-            crosshair.SetColour(Color.white);
-            crosshair.SetScale(0.5f);
+            crosshair.SetColour(Color.black);
+            crosshair.SetScale(0.2f);
             return;
         }
         // If sheep has a BlueBoomManager, set the scale based on the chain radius, otherwise use the blast radius

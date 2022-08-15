@@ -24,21 +24,39 @@ public class WaveController : MonoBehaviour
     public float waveTimer;
     private float waveNumber = 0;
     public GameObject boundaries;
-    private List<GameObject > liveSheep = new List<GameObject>();
+    private List<GameObject> liveSheep = new List<GameObject>();
+    public TimeLeftDisplay timeLeftDisplay;
+    [SerializeField] GameObject megaSheep;
 
     [SerializeField] List<Spawn> spawns = new List<Spawn>();
     [SerializeField] List<GameObject> flock = new List<GameObject>();
+
+    // override setter for waveTimer which calls updateWaveTimer
+    public float WaveTimer
+    {
+        get { return waveTimer; }
+        set { waveTimer = value; if (waveTimer<0){waveTimer=0;} updateWaveTimer(); }
+    }
+
+    // override setter for state which calls updateWaveTimer
+    public WaveState State
+    {
+        get { return state; }
+        set { state = value; updateWaveTimer(); }
+    }
 
     public enum WaveState {
         PREWAVE, // Sheep/Scarecrows Spawn
         WAVE, // Enemies Spawn and Attack
         POSTWAVE, // Enemies Retreat
+        FAIL, // Last sheep dies
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        waveTimer = restDuration;
+        Cursor.visible = false;
+        WaveTimer = restDuration;
         setupBoundaries();
         beginPreWave();
     }
@@ -57,7 +75,7 @@ public class WaveController : MonoBehaviour
     }
 
     void FixedUpdate() {
-        waveTimer -= Time.fixedDeltaTime;
+        WaveTimer -= Time.fixedDeltaTime;
         if (waveTimer <= 0)
         {
             switch (state){
@@ -72,6 +90,9 @@ public class WaveController : MonoBehaviour
                     // Load the next scene
                     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                     break;
+                case WaveState.FAIL:
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                    break;
             }
         }
         switch (state)
@@ -84,6 +105,9 @@ public class WaveController : MonoBehaviour
                 break;
             case WaveState.POSTWAVE:
                 PostWave();
+                break;
+            case WaveState.FAIL:
+                Fail();
                 break;
         }
     }
@@ -115,7 +139,9 @@ public class WaveController : MonoBehaviour
         // Find how many sheep objects are alive
         if (allSheepDead()){
             //Restart the wave
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            //Set state to failed
+            WaveTimer = restDuration/2;
+            State = WaveState.FAIL;
         };
 
         //Iterate through the list of spawns and deduct from their spawn timers. If they are 0, spawn an enemy and select a new random time.
@@ -137,29 +163,36 @@ public class WaveController : MonoBehaviour
 
     }
 
+    private void Fail()
+    {
+
+    }
 
     private void beginPreWave()
     {
-        state = WaveState.PREWAVE;
-        waveTimer = restDuration/2;
+        State = WaveState.PREWAVE;
+        WaveTimer = restDuration/2;
         spawnSheep();
     }
 
     private void beginWave()
     {
-        waveTimer = waveDuration;
+        WaveTimer = waveDuration;
         waveNumber++;
-        state = WaveState.WAVE;
+        State = WaveState.WAVE;
     }
 
     private void beginPostWave()
     {
-        state = WaveState.POSTWAVE;
-        waveTimer = restDuration/2;
+        State = WaveState.POSTWAVE;
+        WaveTimer = restDuration/2;
         //find all enemies and call onWaveEnd()
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         for (int i=0; i<enemies.Length; i++)
         {
+            //Explode a megaSheep on the enemy.
+            GameObject sheep = Instantiate(megaSheep, enemies[i].transform.position, Quaternion.identity);
+            sheep.GetComponent<SheepController>().Boom();
             enemies[i].GetComponent<EnemyController>().OnWaveEnd();
         }
     }
@@ -187,5 +220,31 @@ public class WaveController : MonoBehaviour
             }
         }
         return true;
+    }
+
+    // update the wave timer display
+    private void updateWaveTimer()
+    {
+        string stateName;
+        //switch to set stateName to the name of each state
+        switch (state)
+        {
+            case WaveState.PREWAVE:
+                stateName = "Pre-Wave \nPoachers arrive in: ";
+                break;
+            case WaveState.WAVE:
+                stateName = "Wave in Progress \nTime left: ";
+                break;
+            case WaveState.POSTWAVE:
+                stateName = "Wave Complete! \nContinuing in: ";
+                break;
+            case WaveState.FAIL:
+                stateName = "Wave Failed! (No sheep) \nNew Flock in: ";
+                break;
+            default:
+                stateName = "";
+                break;
+        }
+        timeLeftDisplay.UpdateTimeLeft(stateName, waveTimer);
     }
 }

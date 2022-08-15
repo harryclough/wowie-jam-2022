@@ -15,6 +15,14 @@ public class DeathBarrier : MonoBehaviour
 
         Debug.Log("OOB");
         DeathController deathController = collision.gameObject.GetComponent<DeathController>();
+        // if the collision object is an enemy and is not holding a sheep, ignore
+        EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
+        if (enemy!=null && !enemy.IsCarryingSheep())
+        {
+            Debug.Log("Spared Enemy");
+            return;
+        }
+
         if (deathController!=null)
         {
             deathController.Die();
