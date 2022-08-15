@@ -10,6 +10,8 @@ public class BlueBoomManager : BoomManager
     [SerializeField] float speed = 10f;
     [SerializeField] float hitRadius = 0.1f;
     [SerializeField] BasicHoming homing;
+    public LineRenderer lineRenderer;
+    private List<Vector3> points = new List<Vector3>();
     // private List<Collider2D> chainedEnemies = new List<Collider2D>();
     private HashSet<Collider2D> chainedEnemiesSet = new HashSet<Collider2D>();
     private GameObject obj;
@@ -22,11 +24,13 @@ public class BlueBoomManager : BoomManager
 
     public override void Boom(GameObject gameObject)
     {
+        addPoint(gameObject.transform.position);
         gameObject.GetComponent<Collider2D>().enabled = false;
         obj = gameObject;
         homing.enabled = true;
         chasing = true;
         Chain(gameObject);
+        lineRenderer.transform.parent = null;
         Debug.Log("Blue sheep is boomed");
     }
 
@@ -50,6 +54,7 @@ public class BlueBoomManager : BoomManager
             }
         }
         //If no targets, die
+        lineRenderer.transform.parent = gameObject.transform;
         Die();
     }
 
@@ -89,6 +94,8 @@ public class BlueBoomManager : BoomManager
         // check if the sheep has reached the target enemy
         if (homing.target == null || (chasing && Vector2.Distance(gameObject.transform.position, homing.target.transform.position) < hitRadius))
         {
+            //set the current position as a line renderer point
+            addPoint(gameObject.transform.position);
             HitEnemiesInRadius(gameObject);
             Chain(gameObject);
         }
@@ -101,12 +108,15 @@ public class BlueBoomManager : BoomManager
     }
 
     private void Start() {
+        boomParticles = GetComponent<ParticleSystem>();
         homing.enabled = false;
     }
 
     private void Update() {
         if (chasing){
             Chase(obj);
+            //Add point to the renderer
+            addPoint(obj.transform.position);
         }
     }
 
@@ -118,6 +128,13 @@ public class BlueBoomManager : BoomManager
         homing.SetTarget(null);
         homing.enabled = false;
         Destroy(this.gameObject);
+    }
+
+    private void addPoint(Vector3 point)
+    {
+        points.Add(point);
+        lineRenderer.positionCount = points.Count;
+        lineRenderer.SetPositions(points.ToArray());
     }
 }
 

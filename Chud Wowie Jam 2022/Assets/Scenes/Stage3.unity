@@ -140,7 +140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3350422929174347171, guid: d14897c27df5c4a4592b57c1648f7dd2, type: 3}
       propertyPath: flock.Array.size
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3350422929174347171, guid: d14897c27df5c4a4592b57c1648f7dd2, type: 3}
       propertyPath: spawns.Array.size
@@ -157,7 +157,7 @@ PrefabInstance:
     - target: {fileID: 3350422929174347171, guid: d14897c27df5c4a4592b57c1648f7dd2, type: 3}
       propertyPath: flock.Array.data[2]
       value: 
-      objectReference: {fileID: 7819820839739668918, guid: a5e725b6056ef504c9f4b8a787739ea3, type: 3}
+      objectReference: {fileID: 128818544514105928, guid: e2b95bab179338748b866b3101d3a968, type: 3}
     - target: {fileID: 3350422929174347171, guid: d14897c27df5c4a4592b57c1648f7dd2, type: 3}
       propertyPath: flock.Array.data[3]
       value: 
@@ -169,7 +169,7 @@ PrefabInstance:
     - target: {fileID: 3350422929174347171, guid: d14897c27df5c4a4592b57c1648f7dd2, type: 3}
       propertyPath: flock.Array.data[5]
       value: 
-      objectReference: {fileID: 7819820839739668918, guid: a5e725b6056ef504c9f4b8a787739ea3, type: 3}
+      objectReference: {fileID: 1720501410107912928, guid: 73c416cfa5c852d41a131be23f80d7ec, type: 3}
     - target: {fileID: 3350422929174347171, guid: d14897c27df5c4a4592b57c1648f7dd2, type: 3}
       propertyPath: flock.Array.data[6]
       value: 

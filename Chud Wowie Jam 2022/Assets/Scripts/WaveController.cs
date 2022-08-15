@@ -68,7 +68,7 @@ public class WaveController : MonoBehaviour
                     beginPostWave();
                     break;
                 case WaveState.POSTWAVE:
-                    beginPreWave();
+                    //beginPreWave();
                     // Load the next scene
                     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                     break;

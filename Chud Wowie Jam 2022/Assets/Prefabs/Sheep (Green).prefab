@@ -122,6 +122,11 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 5281000421352939627, guid: e2b95bab179338748b866b3101d3a968, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e2b95bab179338748b866b3101d3a968, type: 3}
+--- !u!198 &358394312593502651 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7617126206814145093, guid: e2b95bab179338748b866b3101d3a968, type: 3}
+  m_PrefabInstance: {fileID: 7875725201866898430}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7819820839739668918 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 128818544514105928, guid: e2b95bab179338748b866b3101d3a968, type: 3}
@@ -141,4 +146,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blastRadius: 2.5
   blastDamage: 1000
+  boomParticles: {fileID: 358394312593502651}
   crosshair: 0

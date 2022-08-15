@@ -55,11 +55,12 @@ public class SheepController : MonoBehaviour, DeathController
     {
         if (isThrown){
             rb.velocity = (thrownTarget - transform.position).normalized * throwSpeed;
-        }
-        //if reached target position, boom
-        if (Vector3.Distance(transform.position, thrownTarget) < 0.1f)
-        {
-            Boom();
+            //if reached target position, boom
+            if (Vector3.Distance(transform.position, thrownTarget) < 0.1f)
+            {
+                Boom();
+                isThrown = false;
+            }
         }
     }
 

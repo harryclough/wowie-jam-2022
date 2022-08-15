@@ -130,6 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blastRadius: 7.5
   blastDamage: 200
+  boomParticles: {fileID: 9195403551764691693}
   crosshair: 0
 --- !u!114 &4374800824746986897
 MonoBehaviour:
@@ -148,3 +149,8 @@ MonoBehaviour:
   minForce: 300
   maxForce: 500
   fleeRange: 4
+--- !u!198 &9195403551764691693 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7617126206814145093, guid: e2b95bab179338748b866b3101d3a968, type: 3}
+  m_PrefabInstance: {fileID: 1597041885341642920}
+  m_PrefabAsset: {fileID: 0}

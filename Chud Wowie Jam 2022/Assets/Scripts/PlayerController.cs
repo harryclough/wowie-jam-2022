@@ -138,7 +138,12 @@ public class PlayerController : MonoBehaviour
         moveDirection.x = Input.GetAxisRaw("Horizontal");
         moveDirection.y = Input.GetAxisRaw("Vertical");
         moveDirection.Normalize();
-        Vector3 pos = transform.position + moveDirection * speed * Time.deltaTime;
+        float sheepSlow = 1f;
+        if (carriedSheep != null)
+        {
+            sheepSlow = carriedSheep.enemySlowdown;
+        }
+        Vector3 pos = transform.position + moveDirection * speed * sheepSlow * Time.deltaTime;
         //Check if pos is within the radius of the map using the map bounds
         if (pos.magnitude > WaveController.mapRadius){
             //clamp the player to the circle of the map

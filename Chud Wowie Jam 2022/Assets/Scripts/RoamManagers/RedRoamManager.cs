@@ -33,7 +33,7 @@ public class RedRoamManager : RoamManager
         float force = Random.Range(minForce, maxForce);
         // Apply the force to the sheep
         rb.AddForce(direction * force);
-        Debug.Log("Flee: "+direction);
+        //Debug.Log("Flee: "+direction);
         }
     }
 }
